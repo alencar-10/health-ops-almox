@@ -1,0 +1,4 @@
+sku,name,unit_of_measure,manufacturer,active_ingredient,initial_stock,minimum_stock
+NEW-SKU-001,Product One,UNIT,No Doc Corp,Dipirona 500mg,100,10
+NEW-SKU-002,Product Two,BOX,Unknown Corp,Dipirona 500mg,50,5
+SKU001-MED,Product Existing,UNIT,No Doc Corp,Dipirona 500mg,0,0

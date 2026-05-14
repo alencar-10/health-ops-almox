@@ -1,0 +1,22 @@
+services:
+  vivver_almox_db:
+    image: postgres:16
+    container_name: vivver_almox_db
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${DB_NAME:-almox_db}
+    ports:
+      - "5434:5432"
+    volumes:
+      - vivver_almox_data:/var/lib/postgresql/data
+    networks:
+      - almox_network
+
+networks:
+  almox_network:
+    driver: bridge
+
+volumes:
+  vivver_almox_data:

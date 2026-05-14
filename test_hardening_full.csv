@@ -1,0 +1,3 @@
+sku,name,unit_of_measure,manufacturer,active_ingredient,initial_stock,minimum_stock
+HARD-001,Hardened Product 1,UNIT,No Doc Corp,Dipirona Monoidratada,100,10
+HARD-002,Hardened Product 2,BOX,Medley S.A.,Dipirona Monoidratada,50,5

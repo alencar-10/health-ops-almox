@@ -1,0 +1,42 @@
+{
+  "scenarios": [
+    {
+      "name": "Standard Stock Entry (Medication)",
+      "type": "ENTRY",
+      "payload": {
+        "product_id": "77f0c5d2-5d6d-4ee6-9371-4a970f0196e3",
+        "quantity": 500,
+        "reference_document": "NF-9988-GUARA",
+        "reason": "Almoxarifado Central Delivery",
+        "metadata": {
+          "batch_number": "LOT-2026-X4",
+          "expiry_date": "2027-12-31"
+        }
+      }
+    },
+    {
+      "name": "Dispensation to Sector",
+      "type": "EXIT",
+      "payload": {
+        "product_id": "77f0c5d2-5d6d-4ee6-9371-4a970f0196e3",
+        "quantity": 10,
+        "reason": "Urgency Cart Replenishment",
+        "metadata": {
+          "protocol_number": "PR-102030",
+          "batch_number": "LOT-2026-X4"
+        }
+      }
+    },
+    {
+      "name": "Internal Sector Transfer",
+      "type": "TRANSFER",
+      "payload": {
+        "product_id": "77f0c5d2-5d6d-4ee6-9371-4a970f0196e3",
+        "origin_sector_id": "00000000-0000-0000-0000-000000000001",
+        "destination_sector_id": "00000000-0000-0000-0000-000000000002",
+        "quantity": 50,
+        "reason": "Internal Distribution"
+      }
+    }
+  ]
+}

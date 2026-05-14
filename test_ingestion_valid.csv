@@ -1,0 +1,3 @@
+sku,name,unit_of_measure,manufacturer,active_ingredient,initial_stock,minimum_stock
+VALID-SKU-001,Product One,UNIT,No Doc Corp,Dipirona Monoidratada,100,10
+VALID-SKU-002,Product Two,BOX,Medley S.A.,Dipirona Monoidratada,50,5
