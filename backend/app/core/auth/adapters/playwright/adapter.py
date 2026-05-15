@@ -4,7 +4,7 @@ from typing import Optional, List, Dict
 from playwright.async_api import async_playwright
 
 from app.core.auth.engine import AuthEngine, ContextDiscoveryEngine
-from app.core.session.context import OperationalContext
+from app.core.session.context import OperationalContext, SessionContext
 from app.core.config import settings
 
 # Importando sub-clientes
@@ -72,6 +72,14 @@ class PlaywrightAuthAdapter(AuthEngine, ContextDiscoveryEngine):
             # Resolução visual rápida do contexto ativo (Stage 2)
             # Nota: Usamos fallbacks pois o discovery completo (Stage 3) é disparado sob demanda
             self._status = "AUTHENTICATED"
+            
+            session_ctx = SessionContext(
+                session_id=session_id,
+                csrf_token=csrf_token,
+                auth_token=cookies.get('auth_token'),
+                cookies=cookies
+            )
+            
             return OperationalContext(
                 tenant_id=tenant_id,
                 prefecture_name="Guaraciama - MG",
@@ -81,9 +89,7 @@ class PlaywrightAuthAdapter(AuthEngine, ContextDiscoveryEngine):
                 sector_name="ATENDIMENTO",
                 operator_id=username,
                 operator_name="Administrador",
-                csrf_token=csrf_token,
-                session_id=session_id,
-                auth_token=cookies.get('auth_token')
+                session=session_ctx
             )
 
         except Exception as e:
@@ -119,6 +125,13 @@ class PlaywrightAuthAdapter(AuthEngine, ContextDiscoveryEngine):
         csrf_token = await self.session.extract_csrf_token()
         cookies = await self.session.get_cookies()
         
+        session_ctx = SessionContext(
+            session_id=cookies.get('_vmx_saude_session'),
+            csrf_token=csrf_token,
+            auth_token=cookies.get('auth_token'),
+            cookies=cookies
+        )
+        
         # Retorna o novo contexto validado
         return OperationalContext(
             tenant_id="3128253",
@@ -129,9 +142,7 @@ class PlaywrightAuthAdapter(AuthEngine, ContextDiscoveryEngine):
             sector_name="SETOR ATUALIZADO",
             operator_id="35304775830",
             operator_name="Administrador",
-            csrf_token=csrf_token,
-            session_id=cookies.get('_vmx_saude_session'),
-            auth_token=cookies.get('auth_token')
+            session=session_ctx
         )
 
     async def refresh(self, context: OperationalContext) -> bool:

@@ -1,9 +1,17 @@
-import React from 'react';
-import Sidebar from './Sidebar';
-import TopBar from './TopBar';
-import './AppShell.css';
+import { useSession } from '../context/SessionContext';
 
 const AppShell = ({ children, activeView, onViewChange }) => {
+  const { session, loading } = useSession();
+
+  if (loading) {
+    return (
+      <div className="app-shell-loading">
+        <div className="loader"></div>
+        <p>Sincronizando Contexto Real com Vivver ERP...</p>
+      </div>
+    );
+  }
+
   return (
     <div className="app-shell">
       <Sidebar activeView={activeView} onViewChange={onViewChange} />

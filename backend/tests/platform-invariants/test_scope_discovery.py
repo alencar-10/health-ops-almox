@@ -27,7 +27,7 @@ async def test_real_scope_discovery():
     )
     
     assert context is not None
-    print(f"-> Login OK (Sessão: {context.session_id[:10]}...)")
+    print(f"-> Login OK (Sessão: {context.session.session_id[:10]}...)")
 
     # 2. Descoberta de Unidades (Stage 3)
     print("-> Solicitando catálogo de unidades via XHR Sniffing...")

@@ -11,7 +11,11 @@ import { useSession } from '../context/SessionContext';
 import './TopBar.css';
 
 const TopBar = () => {
-  const { session, appMode } = useSession();
+  const { session, appMode, setAppMode } = useSession();
+
+  const toggleMode = () => {
+    setAppMode(prev => prev === 'LAB' ? 'PRODUCTION' : 'LAB');
+  };
 
   return (
     <header className="top-bar">
@@ -51,12 +55,16 @@ const TopBar = () => {
           <span>Contexto operacional válido</span>
         </div>
         
-        <div className={`status-badge ${appMode.toLowerCase()}`}>
+        <div 
+          className={`status-badge ${appMode.toLowerCase()} clickable`}
+          onClick={toggleMode}
+          title="Clique para alternar entre Lab e Produção Real"
+        >
           <ShieldCheck size={14} />
           <span>
             {appMode === 'PRODUCTION' 
-              ? 'VIVVER PRODUCTION MODE' 
-              : 'HEALTH-OPS LAB MODE - SIMULATION & SAFETY ON'}
+              ? 'VIVVER PRODUCTION MODE (REAL)' 
+              : 'HEALTH-OPS LAB MODE (SIMULATION)'}
           </span>
         </div>
       </div>

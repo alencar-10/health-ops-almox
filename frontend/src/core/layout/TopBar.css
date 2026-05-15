@@ -83,6 +83,23 @@
   border: 1px solid #dbeafe;
 }
 
+.status-badge.production {
+  background: #fff7ed;
+  color: #9a3412;
+  border: 1px solid #ffedd5;
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.1);
+}
+
+.status-badge.clickable {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.status-badge.clickable:hover {
+  transform: translateY(-1px);
+  filter: brightness(0.95);
+}
+
 .user-profile {
   display: flex;
   align-items: center;

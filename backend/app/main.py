@@ -2,7 +2,7 @@ import uuid
 from fastapi import FastAPI, Request, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from app.api import health
-from app.api.v1 import active_ingredients, manufacturers, suppliers, products, movements, ingestion, organization, inventory, integration, inbound, catalog
+from app.api.v1 import active_ingredients, manufacturers, suppliers, products, movements, ingestion, organization, inventory, integration, inbound, catalog, session
 from app.core.config import settings
 from app.core.logging import correlation_id, logger
 
@@ -93,6 +93,11 @@ app.include_router(
     catalog.router, 
     prefix="/almox/v1/catalog", 
     tags=["Catalog Operations"]
+)
+app.include_router(
+    session.router, 
+    prefix="/almox/v1/session", 
+    tags=["Session Management"]
 )
 
 @app.get("/")
