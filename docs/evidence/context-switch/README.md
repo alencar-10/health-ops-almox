@@ -44,6 +44,7 @@ Não altere frontend, backend de sessão/contexto Vivver nem rotas `/almox/v1/se
 | [ARCHITECTURAL_IMPACT.md](./ARCHITECTURAL_IMPACT.md) | Impacto no HealthOps, merge scope |
 | [CHANGELOG_CONTEXT_ENGINE.md](./CHANGELOG_CONTEXT_ENGINE.md) | **Changelog institucional** (Added / Fixed / Known risks) |
 | [RELEASE_HANDOFF.md](./RELEASE_HANDOFF.md) | **Handoff operacional** (boot, env, validação) |
+| [FRONTEND_BASELINE_PROTOCOL.md](../../core-platform/FRONTEND_BASELINE_PROTOCOL.md) | **Checklist pré-merge** do shell / TopBar (smoke, hidratação, switch, stale, recovery, tag sugerido) |
 | [WORKING_TREE_AUDIT.md](./WORKING_TREE_AUDIT.md) | Auditoria IN/OUT da release |
 
 ## Documentos de suporte

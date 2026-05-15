@@ -42,6 +42,10 @@ Adicionar `correlation_id` e `context_version` em cada manobra para rastrear ten
 
 Contrato forense e operacional da persistência no Vivver: [COMMIT_PROTOCOL_v1.md](../evidence/context-switch/COMMIT_PROTOCOL_v1.md).
 
+## Baseline de frontend operacional
+
+Checklists de merge, smoke/hidratação/switch/stale/recovery do shell e TopBar: [FRONTEND_BASELINE_PROTOCOL.md](./FRONTEND_BASELINE_PROTOCOL.md).
+
 ## Protocolo de Revalidação Atual (P1)
 
 Para esta fase, a revalidação foca em:
