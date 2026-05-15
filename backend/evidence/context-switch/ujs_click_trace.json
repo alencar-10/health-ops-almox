@@ -1,0 +1,1301 @@
+{
+  "label": "ujs_click",
+  "summary": {
+    "label": "ujs_click",
+    "total_events": 36,
+    "create_conexao_post_count": 1,
+    "create_conexao_response_count": 1,
+    "create_conexao_posts": [
+      {
+        "ts": "2026-05-15T11:46:53.236709+00:00",
+        "phase": "request",
+        "url": "https://guaraciama-mg.vivver.com/seg/operador/1659/create_conexao",
+        "method": "POST",
+        "status": null,
+        "resource_type": "xhr",
+        "request_headers": {
+          "x-csrf-token": "VhKBVBrs9HCTpV1eJlZr3lZh0GqgbQJFNvti8X/Pr2skQnHOEZtH0jzJAfUza3d8EdQjKpOXm7jOG3e9o9bxzg==",
+          "x-requested-with": "XMLHttpRequest",
+          "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+          "accept": "*/*;q=0.5, text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"
+        },
+        "response_headers": {},
+        "post_data": "utf8=%E2%9C%93&page=&seg_operador%5Bcodoperador%5D=1659&lookup_key%5Bseg_operador%5Bcodmunicipio%5D%5D=3128253&seg_operador%5Bcodmunicipio%5D=3128253&lookup_key%5Bseg_operador%5Bcodunidade%5D%5D=14&seg_operador%5Bcodunidade%5D=14&lookup_key%5Bseg_operador%5Bcodsetor%5D%5D=10&seg_operador%5Bcodsetor%5D=10&commit=Confirmar",
+        "post_data_parsed": {
+          "utf8": [
+            "✓"
+          ],
+          "page": [
+            ""
+          ],
+          "seg_operador[codoperador]": [
+            "1659"
+          ],
+          "lookup_key[seg_operador[codmunicipio]]": [
+            "3128253"
+          ],
+          "seg_operador[codmunicipio]": [
+            "3128253"
+          ],
+          "lookup_key[seg_operador[codunidade]]": [
+            "14"
+          ],
+          "seg_operador[codunidade]": [
+            "14"
+          ],
+          "lookup_key[seg_operador[codsetor]]": [
+            "10"
+          ],
+          "seg_operador[codsetor]": [
+            "10"
+          ],
+          "commit": [
+            "Confirmar"
+          ]
+        },
+        "response_body_preview": null,
+        "failure": null
+      }
+    ],
+    "create_conexao_responses": [
+      {
+        "ts": "2026-05-15T11:46:53.508656+00:00",
+        "phase": "response",
+        "url": "https://guaraciama-mg.vivver.com/seg/operador/1659/create_conexao",
+        "method": "POST",
+        "status": 200,
+        "resource_type": "xhr",
+        "request_headers": {},
+        "response_headers": {
+          "content-type": "text/javascript; charset=utf-8",
+          "x-request-id": "f4c27655-167c-4589-9491-e1b98ab77829"
+        },
+        "post_data": "utf8=%E2%9C%93&page=&seg_operador%5Bcodoperador%5D=1659&lookup_key%5Bseg_operador%5Bcodmunicipio%5D%5D=3128253&seg_operador%5Bcodmunicipio%5D=3128253&lookup_key%5Bseg_operador%5Bcodunidade%5D%5D=14&seg_operador%5Bcodunidade%5D=14&lookup_key%5Bseg_operador%5Bcodsetor%5D%5D=10&seg_operador%5Bcodsetor%5D=10&commit=Confirmar",
+        "post_data_parsed": {
+          "utf8": [
+            "✓"
+          ],
+          "page": [
+            ""
+          ],
+          "seg_operador[codoperador]": [
+            "1659"
+          ],
+          "lookup_key[seg_operador[codmunicipio]]": [
+            "3128253"
+          ],
+          "seg_operador[codmunicipio]": [
+            "3128253"
+          ],
+          "lookup_key[seg_operador[codunidade]]": [
+            "14"
+          ],
+          "seg_operador[codunidade]": [
+            "14"
+          ],
+          "lookup_key[seg_operador[codsetor]]": [
+            "10"
+          ],
+          "seg_operador[codsetor]": [
+            "10"
+          ],
+          "commit": [
+            "Confirmar"
+          ]
+        },
+        "response_body_preview": "(function($){\n   var $newConexao = $('<div class=\\\"col-xs-12 col-sm-12 col-md-12 col-lg-12 fwk-col col-centered\\\">\\n\\n\\n        <form class=\\\"edit_seg_operador\\\" id=\\\"edit_seg_operador_1659\\\" data-id=\\\"1659\\\" data-model-name=\\\"seg_operador\\\" data-model-id=\\\"1659\\\" action=\\\"/seg/operador/1659/create_conexao\\\" accept-charset=\\\"UTF-8\\\" data-remote=\\\"true\\\" method=\\\"post\\\"><input name=\\\"utf8\\\" type=\\\"hidden\\\" value=\\\"&#x2713;\\\" />\\n\\n            <div data-box=\\\"true\\\" data-box-options=\\\"{&quot;show_title&quot;:false,&quot;title&quot;:&quot;\\\\u003ci class=\\\\&quot;fas fa-info\\\\&quot;\\\\u003e\\\\u003c/i\\\\u003e Parâmetros&quot;,&quot;type&quot;:&quot;primary&quot;,&quot;minus&quot;:false}\\\">\\n\\n                \t\t<div class=\\\"row\\\">\\n\t\t\t<div class=\\\"col-xs-12 col-sm-12 col-md-12 col-lg-12 fwk-col\\\">\\n\t\t\t\t<div class=\\\"fwk-alert-message alert alert-success\\\">Conexão ativada com sucesso<button type=\\\"button\\\" class=\\\"close\\\" data-dismiss=\\\"alert\\\" aria-hidden=\\\"true\\\">&times;<\\/button><\\/div>\\n<\\/div><\\/div>\\n                \\n\\n                <input type=\\\"hidden\\\" name=\\\"page\\\" id=\\\"page\\\" value=\\\"\\\" />\\n                <input value=\\\"1659\\\" type=\\\"hidden\\\" name=\\\"seg_operador[codoperador]\\\" id=\\\"seg_operador_codoperador\\\" />\\n\\n                <div class=\\\"col-xs-12 col-sm-12 col-md-12 col-lg-12 fwk-col\\\">\\n                    <div class=\\\"form-group fwk-form-group  fwk-group-lookup\\\"><label class=\\\"\\\" for=\\\"seg_operador_codmunicipio\\\">Município<\\/label><div class=\\\"row lookup-edit-row\\\"><div class=\\\"col-xs-4 col-sm-2 col-md-2 col-lg-2 lookup-col-key\\\"><input type=\\\"text\\\" name=\\\"lookup_key[seg_operador[codmunicipio]]\\\" id=\\\"lookup_key_seg_operador_codmunicipio\\\" value=\\\"\\\" class=\\\"form-control lookup-edit-key\\\" data-toggle=\\\"tooltip\\\" data-placement=\\\"top\\\" data-title=\\\"Município\\\" /><\\/div><div class=\\\"col-xs-8 col-sm-10 col-md-10 col-lg-10 lookup-col-name\\\"><input value=\\\"3128253\\\" placeholder=\\\"Selecione...\\\" data-lookup=\\\"true\\\" data-lookup-model=\\\"Seg::Operador::ConexaoQuery.search.distinct\\\" data-lookup-name=\\\"nommun... [truncated, total=5462]",
+        "failure": null
+      }
+    ],
+    "lookup_xhr_count": 6
+  },
+  "timeline": [
+    {
+      "ts": "2026-05-15T11:46:41.108963+00:00",
+      "event": "http_request",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/login",
+      "has_post": false
+    },
+    {
+      "ts": "2026-05-15T11:46:41.259828+00:00",
+      "event": "http_request",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/assets/login-046d3664d82f148570e47b0946bb00057f7e143051369b7a2607645064985188.css",
+      "has_post": false
+    },
+    {
+      "ts": "2026-05-15T11:46:41.260254+00:00",
+      "event": "http_request",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/assets/login-605f6e16e4a06510cfb5423b96051ec6046917153ef7f57e96d9f0bbb11a756c.js",
+      "has_post": false
+    },
+    {
+      "ts": "2026-05-15T11:46:41.321087+00:00",
+      "event": "http_response",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/assets/login-046d3664d82f148570e47b0946bb00057f7e143051369b7a2607645064985188.css",
+      "status": 200
+    },
+    {
+      "ts": "2026-05-15T11:46:41.387763+00:00",
+      "event": "http_response",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/login",
+      "status": 200
+    },
+    {
+      "ts": "2026-05-15T11:46:41.396458+00:00",
+      "event": "http_response",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/assets/login-605f6e16e4a06510cfb5423b96051ec6046917153ef7f57e96d9f0bbb11a756c.js",
+      "status": 200
+    },
+    {
+      "ts": "2026-05-15T11:46:41.691846+00:00",
+      "event": "http_request",
+      "method": "POST",
+      "url": "https://guaraciama-mg.vivver.com/login/valida_presenca_termo",
+      "has_post": true
+    },
+    {
+      "ts": "2026-05-15T11:46:41.749630+00:00",
+      "event": "http_request",
+      "method": "POST",
+      "url": "https://guaraciama-mg.vivver.com/login/create",
+      "has_post": true
+    },
+    {
+      "ts": "2026-05-15T11:46:41.750923+00:00",
+      "event": "http_response",
+      "method": "POST",
+      "url": "https://guaraciama-mg.vivver.com/login/valida_presenca_termo",
+      "status": 200
+    },
+    {
+      "ts": "2026-05-15T11:46:43.694405+00:00",
+      "event": "http_response",
+      "method": "POST",
+      "url": "https://guaraciama-mg.vivver.com/login/create",
+      "status": 200
+    },
+    {
+      "ts": "2026-05-15T11:46:43.727892+00:00",
+      "event": "http_request",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/assets/seg/operador-9955503a5d98875f3710e754045a92fdc3e392541ec43aa9c632fa1dc1f43a3a.png",
+      "has_post": false
+    },
+    {
+      "ts": "2026-05-15T11:46:44.114948+00:00",
+      "event": "http_response",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/assets/seg/operador-9955503a5d98875f3710e754045a92fdc3e392541ec43aa9c632fa1dc1f43a3a.png",
+      "status": 200
+    },
+    {
+      "ts": "2026-05-15T11:46:50.453465+00:00",
+      "event": "http_request",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/assets/seg/operador-9955503a5d98875f3710e754045a92fdc3e392541ec43aa9c632fa1dc1f43a3a.png",
+      "has_post": false
+    },
+    {
+      "ts": "2026-05-15T11:46:50.488319+00:00",
+      "event": "http_response",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/assets/seg/operador-9955503a5d98875f3710e754045a92fdc3e392541ec43aa9c632fa1dc1f43a3a.png",
+      "status": 200
+    },
+    {
+      "ts": "2026-05-15T11:46:50.779103+00:00",
+      "event": "snapshot_before_session",
+      "fingerprint": "55d121467cb9:Yk6ztLDHvQ=="
+    },
+    {
+      "ts": "2026-05-15T11:46:50.791366+00:00",
+      "event": "http_request",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/seg/operador/conexao",
+      "has_post": false
+    },
+    {
+      "ts": "2026-05-15T11:46:50.937357+00:00",
+      "event": "http_request",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/assets/seg/operador-079070790e7f9342b2d9d29fcbad3c918dc50061ee3a5890537f1dea00bdd6b6.css",
+      "has_post": false
+    },
+    {
+      "ts": "2026-05-15T11:46:50.938206+00:00",
+      "event": "http_request",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/assets/seg/operador-29b15034e5d255ad7e2e43f5661aca9e3a418fc29329aa161a5414cff8c7e8d4.js",
+      "has_post": false
+    },
+    {
+      "ts": "2026-05-15T11:46:50.951566+00:00",
+      "event": "http_response",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/seg/operador/conexao",
+      "status": 200
+    },
+    {
+      "ts": "2026-05-15T11:46:50.983829+00:00",
+      "event": "http_response",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/assets/seg/operador-079070790e7f9342b2d9d29fcbad3c918dc50061ee3a5890537f1dea00bdd6b6.css",
+      "status": 200
+    },
+    {
+      "ts": "2026-05-15T11:46:50.986602+00:00",
+      "event": "http_response",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/assets/seg/operador-29b15034e5d255ad7e2e43f5661aca9e3a418fc29329aa161a5414cff8c7e8d4.js",
+      "status": 200
+    },
+    {
+      "ts": "2026-05-15T11:46:51.120922+00:00",
+      "event": "http_request",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/fwk/lookup_edit_v3?query=3128253&limit=20&model=Seg%3A%3AOperador%3A%3AConexaoQuery.search.distinct&scope=&key=codmunicipio&name=nommunicipio&where=%2Ccodoperador%3D1659&columns=codmunicipio%2Cnommunicipio%2Csgluf%2Ccodmunicipio&cache=false&cache_expires=&type=key",
+      "has_post": false
+    },
+    {
+      "ts": "2026-05-15T11:46:51.121711+00:00",
+      "event": "http_request",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/fwk/lookup_edit_v3?query=14&limit=20&model=Seg%3A%3AOperador%3A%3AConexaoQuery.search.distinct&scope=&key=codunidade&name=nomfantasia&where=%2Ccodmunicipio%3D3128253%2Ccodoperador%3D1659&columns=codunidade%2Cnomfantasia%2Ccodunidade&cache=false&cache_expires=&type=key",
+      "has_post": false
+    },
+    {
+      "ts": "2026-05-15T11:46:51.122337+00:00",
+      "event": "http_request",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/fwk/lookup_edit_v3?query=10&limit=20&model=Seg%3A%3AOperador%3A%3AConexaoQuery.search.distinct&scope=&key=codsetor&name=nomsetor&where=%2Ccodmunicipio%3D3128253%2Ccodunidade%3D14%2Ccodoperador%3D1659&columns=codsetor&cache=false&cache_expires=&type=key",
+      "has_post": false
+    },
+    {
+      "ts": "2026-05-15T11:46:51.132607+00:00",
+      "event": "navigate_conexao",
+      "url": "https://guaraciama-mg.vivver.com/seg/operador/conexao"
+    },
+    {
+      "ts": "2026-05-15T11:46:51.176500+00:00",
+      "event": "http_response",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/fwk/lookup_edit_v3?query=3128253&limit=20&model=Seg%3A%3AOperador%3A%3AConexaoQuery.search.distinct&scope=&key=codmunicipio&name=nommunicipio&where=%2Ccodoperador%3D1659&columns=codmunicipio%2Cnommunicipio%2Csgluf%2Ccodmunicipio&cache=false&cache_expires=&type=key",
+      "status": 200
+    },
+    {
+      "ts": "2026-05-15T11:46:51.177316+00:00",
+      "event": "select_unit_skipped",
+      "reason": "hidden_already_set",
+      "value": "14"
+    },
+    {
+      "ts": "2026-05-15T11:46:51.186722+00:00",
+      "event": "http_response",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/fwk/lookup_edit_v3?query=10&limit=20&model=Seg%3A%3AOperador%3A%3AConexaoQuery.search.distinct&scope=&key=codsetor&name=nomsetor&where=%2Ccodmunicipio%3D3128253%2Ccodunidade%3D14%2Ccodoperador%3D1659&columns=codsetor&cache=false&cache_expires=&type=key",
+      "status": 200
+    },
+    {
+      "ts": "2026-05-15T11:46:51.193587+00:00",
+      "event": "http_response",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/fwk/lookup_edit_v3?query=14&limit=20&model=Seg%3A%3AOperador%3A%3AConexaoQuery.search.distinct&scope=&key=codunidade&name=nomfantasia&where=%2Ccodmunicipio%3D3128253%2Ccodoperador%3D1659&columns=codunidade%2Cnomfantasia%2Ccodunidade&cache=false&cache_expires=&type=key",
+      "status": 200
+    },
+    {
+      "ts": "2026-05-15T11:46:53.196365+00:00",
+      "event": "select_sector_skipped",
+      "reason": "hidden_already_set",
+      "value": "10"
+    },
+    {
+      "ts": "2026-05-15T11:46:53.204878+00:00",
+      "event": "form_snapshot_pre_commit"
+    },
+    {
+      "ts": "2026-05-15T11:46:53.204883+00:00",
+      "event": "commit_strategy",
+      "strategy": "ujs_click"
+    },
+    {
+      "ts": "2026-05-15T11:46:53.236837+00:00",
+      "event": "http_request",
+      "method": "POST",
+      "url": "https://guaraciama-mg.vivver.com/seg/operador/1659/create_conexao",
+      "has_post": true
+    },
+    {
+      "ts": "2026-05-15T11:46:53.507366+00:00",
+      "event": "commit_ujs_response",
+      "status": 200,
+      "url": "https://guaraciama-mg.vivver.com/seg/operador/1659/create_conexao"
+    },
+    {
+      "ts": "2026-05-15T11:46:53.507734+00:00",
+      "event": "http_request",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/fwk/lookup_edit_v3?query=3128253&limit=20&model=Seg%3A%3AOperador%3A%3AConexaoQuery.search.distinct&scope=&key=codmunicipio&name=nommunicipio&where=%2Ccodoperador%3D1659&columns=codmunicipio%2Cnommunicipio%2Csgluf%2Ccodmunicipio&cache=false&cache_expires=&type=key",
+      "has_post": false
+    },
+    {
+      "ts": "2026-05-15T11:46:53.507897+00:00",
+      "event": "http_request",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/fwk/lookup_edit_v3?query=14&limit=20&model=Seg%3A%3AOperador%3A%3AConexaoQuery.search.distinct&scope=&key=codunidade&name=nomfantasia&where=%2Ccodmunicipio%3D3128253%2Ccodoperador%3D1659&columns=codunidade%2Cnomfantasia%2Ccodunidade&cache=false&cache_expires=&type=key",
+      "has_post": false
+    },
+    {
+      "ts": "2026-05-15T11:46:53.508078+00:00",
+      "event": "http_request",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/fwk/lookup_edit_v3?query=10&limit=20&model=Seg%3A%3AOperador%3A%3AConexaoQuery.search.distinct&scope=&key=codsetor&name=nomsetor&where=%2Ccodmunicipio%3D3128253%2Ccodunidade%3D14%2Ccodoperador%3D1659&columns=codsetor&cache=false&cache_expires=&type=key",
+      "has_post": false
+    },
+    {
+      "ts": "2026-05-15T11:46:53.508785+00:00",
+      "event": "http_response",
+      "method": "POST",
+      "url": "https://guaraciama-mg.vivver.com/seg/operador/1659/create_conexao",
+      "status": 200
+    },
+    {
+      "ts": "2026-05-15T11:46:53.550688+00:00",
+      "event": "http_response",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/fwk/lookup_edit_v3?query=3128253&limit=20&model=Seg%3A%3AOperador%3A%3AConexaoQuery.search.distinct&scope=&key=codmunicipio&name=nommunicipio&where=%2Ccodoperador%3D1659&columns=codmunicipio%2Cnommunicipio%2Csgluf%2Ccodmunicipio&cache=false&cache_expires=&type=key",
+      "status": 200
+    },
+    {
+      "ts": "2026-05-15T11:46:53.560431+00:00",
+      "event": "http_response",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/fwk/lookup_edit_v3?query=14&limit=20&model=Seg%3A%3AOperador%3A%3AConexaoQuery.search.distinct&scope=&key=codunidade&name=nomfantasia&where=%2Ccodmunicipio%3D3128253%2Ccodoperador%3D1659&columns=codunidade%2Cnomfantasia%2Ccodunidade&cache=false&cache_expires=&type=key",
+      "status": 200
+    },
+    {
+      "ts": "2026-05-15T11:46:53.565639+00:00",
+      "event": "http_response",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/fwk/lookup_edit_v3?query=10&limit=20&model=Seg%3A%3AOperador%3A%3AConexaoQuery.search.distinct&scope=&key=codsetor&name=nomsetor&where=%2Ccodmunicipio%3D3128253%2Ccodunidade%3D14%2Ccodoperador%3D1659&columns=codsetor&cache=false&cache_expires=&type=key",
+      "status": 200
+    },
+    {
+      "ts": "2026-05-15T11:46:57.093358+00:00",
+      "event": "http_request",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/assets/seg/operador-9955503a5d98875f3710e754045a92fdc3e392541ec43aa9c632fa1dc1f43a3a.png",
+      "has_post": false
+    },
+    {
+      "ts": "2026-05-15T11:46:57.121773+00:00",
+      "event": "http_response",
+      "method": "GET",
+      "url": "https://guaraciama-mg.vivver.com/assets/seg/operador-9955503a5d98875f3710e754045a92fdc3e392541ec43aa9c632fa1dc1f43a3a.png",
+      "status": 200
+    }
+  ],
+  "events": [
+    {
+      "ts": "2026-05-15T11:46:41.108919+00:00",
+      "phase": "request",
+      "url": "https://guaraciama-mg.vivver.com/login",
+      "method": "GET",
+      "status": null,
+      "resource_type": "document",
+      "request_headers": {},
+      "response_headers": {},
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": null,
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:41.259803+00:00",
+      "phase": "request",
+      "url": "https://guaraciama-mg.vivver.com/assets/login-046d3664d82f148570e47b0946bb00057f7e143051369b7a2607645064985188.css",
+      "method": "GET",
+      "status": null,
+      "resource_type": "stylesheet",
+      "request_headers": {},
+      "response_headers": {},
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": null,
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:41.260241+00:00",
+      "phase": "request",
+      "url": "https://guaraciama-mg.vivver.com/assets/login-605f6e16e4a06510cfb5423b96051ec6046917153ef7f57e96d9f0bbb11a756c.js",
+      "method": "GET",
+      "status": null,
+      "resource_type": "script",
+      "request_headers": {},
+      "response_headers": {},
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": null,
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:41.321052+00:00",
+      "phase": "response",
+      "url": "https://guaraciama-mg.vivver.com/assets/login-046d3664d82f148570e47b0946bb00057f7e143051369b7a2607645064985188.css",
+      "method": "GET",
+      "status": 200,
+      "resource_type": "stylesheet",
+      "request_headers": {},
+      "response_headers": {
+        "content-type": "text/css"
+      },
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": "html,body{height:100%}.btn-gov-br{border:1px solid #1351b4;cursor:pointer;color:white;font-weight:500;font-size:1.25rem;font-style:normal;border-radius:100px;text-transform:initial;background:#1351b4;width:80%;justify-content:center;align-items:center;text-align:center;padding:3px}.vmx-login-container{position:absolute !important;background-color:#FCFCFC;left:0;bottom:0;right:0;top:0}.vmx-row-vertical-center{position:absolute;top:0;bottom:0;left:0;right:0;width:360px;height:360px;margin:auto}.account-wall{padding:20px 0px 20px 0px;background-color:#f7f7f7;box-shadow:0px 2px 2px rgba(0,0,0,0.3);width:100%;height:auto;margin-left:auto;margin-right:auto}.account-wall .form-signin{max-width:100%;padding:20px;padding-bottom:10px;padding-top:0px;margin:0 auto}.account-wall .form-signin .form-control{position:relative;font-size:16px;height:auto;padding:10px;box-sizing:border-box}.account-wall .form-signin .form-control:focus{z-index:2}.account-wall .form-signin input.invalid{border-color:red}.account-wall .form-signin input.valid{border-color:green}.account-wall .form-signin input[type=\"text\"]{margin-bottom:-1px;border-bottom-left-radius:0;border-bottom-right-radius:0}.account-wall .form-signin input[type=\"text\"]+input[type=\"password\"]{border-top-left-radius:0;border-top-right-radius:0}.account-wall .form-signin input[type=\"submit\"]{margin-top:10px}.account-wall .form-signin .login-outra-conta{display:none}.account-wall .form-signin.login-active .vmx-login-versao{text-align:left}.account-wall .form-signin.login-active .login-outra-conta{display:block}.account-wall .form-signin.login-active .login-digital{font-size:16px;padding-top:15px;margin-bottom:-5px}.account-wall .form-control-static{padding-top:0;font-size:1.3em;color:#333333}.account-wall .login-outra-conta{margin-top:-22px}.account-wall .alert{margin:20px;margin-top:5px;margin-bottom:5px;font-size:12px;overflow:auto;max-height:100px}.account-wall .profile-img{display:block;height:116px;margin:0;margin-top:10px;margin-bottom:10px;margin-left:auto;margin-right:aut... [truncated, total=3535]",
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:41.387710+00:00",
+      "phase": "response",
+      "url": "https://guaraciama-mg.vivver.com/login",
+      "method": "GET",
+      "status": 200,
+      "resource_type": "document",
+      "request_headers": {},
+      "response_headers": {
+        "content-type": "text/html; charset=utf-8",
+        "x-request-id": "f6f2159d-61e2-49f7-b146-5dfea60b67a4"
+      },
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta http-equiv=\"x-ua-compatible\" content=\"ie=edge, chrome=1\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <meta name=\"description\" content=\"Login - Cloud\" />\n  <title>Login - Cloud</title>\n  <link rel=\"stylesheet\" media=\"all\" href=\"/assets/application-login-ed685081329ae0902dda8a0f7ff96dab026dab884c7b821d8d934f63419bed49.css\" />\n  <link rel=\"stylesheet\" media=\"all\" href=\"/assets/login-046d3664d82f148570e47b0946bb00057f7e143051369b7a2607645064985188.css\" />\n\n  <script src=\"/assets/application-login-e72d3d2177d233d9f6fa48573a680004c5c761324c6731ae8e8e8306a3b8c0e6.js\"></script>\n  <script src=\"/assets/login-605f6e16e4a06510cfb5423b96051ec6046917153ef7f57e96d9f0bbb11a756c.js\"></script>\n\n  <link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAACAAAAAgACAIAAAA9xURnAAAAY3pUWHRSYXcgcHJvZmlsZSB0eXBlIGlwdGMAAHjaPcGxDYAwDATA3lMwwjt+v5NxEhASHQX7C4mCO7vuZ7ftE92is3HwAEH8fPiOpgKcCgWplR4tT4niStdUlZdqpjKClgLsBZiME56sMNgwAAAgAElEQVR4XuzdWaxtyXkX8Kq1zum+bcduBxObGBvHJiEQsIJwmIMgEqAQxAsSggfgiSABQoghAgmBGMQkBYECSDwAD4gHpiAemISYEsgEZCDYkMFTEjvBQ+zueOjh7LWKh7p39777nLPXPnuvvYaq3++h1XbW7QT6nFpV33/V98WUUgAAACbU9/327wc35NsHYox7z6eU8n+59+SZ9v6Zu/9x7/+G3f/RnXYfaJrm4LMAAMDI4liHBAAAKMzeVvm+nfPt//7MPfaZf3xGg3nAYbf/+H3/wL3//sz/vQAAUCoBAAAAVTiw771d6I/xjn3y7f8mf8iv+nw5+f/Pb18duDMq2LuscPhfjX9rAADUQAAAAEA59trj3Pc/2vuPuw157isls3B3xja7ycHhbOB2myMAACiAAAAAgJU5UMrf/v0x3+9TswPthg6EAbIBAADWRQAAAMBy5c3qMRX/O/8jnOD4ywH5P0oFAABYLAEAAACzua+Uf+BDflV+ZnRnrX/w6oCEAACAuQgAAAC4oMOteO78+77vFUxZo5TSdurA8WGAn3YAAC5HAAAAwGhuf7l/+292J+4qfVKD3TPX7YTgwN8AAMCZBAAAAJzomHK/3SYcdkwSIBIAAOA0AgAAAAbcnsR752xe5X4YxX1tgm63EhIMAABwmAAAAIDH9naGe1/x39e7H5jGgQBgLwkQDAAAkAkAAADqtVfZ3/ubbbN+xURYpu3vbB4tcF/vIL/CAADVEgAAAFTkzoq/fv1QmPsCAHkAAEBtBAAAACVT8QfkAQAA1RIAAACUI6V0oHG/ij9w38CA3VRAJAAAUAwBAADA+hyY1uvrfuAEdwYAZgsDAKydAAAAYB12v+g3rRe4nMOzhTUOAgBYEQEAAMBy3S7639nYB2ACtwMAYQAAwMIJAAAAluJwod+2DViO3aK/SAAAYLEEAAAA87hd3PeNP7Beh2MAkQAAwCwEAAAA01H0B2... [truncated, total=542897]",
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:41.396420+00:00",
+      "phase": "response",
+      "url": "https://guaraciama-mg.vivver.com/assets/login-605f6e16e4a06510cfb5423b96051ec6046917153ef7f57e96d9f0bbb11a756c.js",
+      "method": "GET",
+      "status": 200,
+      "resource_type": "script",
+      "request_headers": {},
+      "response_headers": {
+        "content-type": "application/javascript"
+      },
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": "!function(t){window.URL=window.URL||window.webkitURL,t.CrsIsEmpty=function(t){return null==t||t.hasOwnProperty(\"length\")&&0===t.length||t.constructor===Object&&0===Object.keys(t).length},t.CrsIsPresent=function(e){return!t.CrsIsEmpty(e)},t.CrsEncodeUtf8=function(t){return unescape(encodeURIComponent(t))},t.CrsDecodeUtf8=function(t){return decodeURIComponent(escape(t))},t.CrsIsBase64=function(t){if(\"\"===t||\"\"===t.trim())return!1;try{return btoa(atob(t))==t}catch(t){return!1}},t.CrsHexToBlob=function(t,e){if(!t)return new Uint8Array;for(var n=[],r=0,i=t.length;r<i;r+=2)n.push(parseInt(t.substr(r,2),16));return new Blob([new Uint8Array(n)],{type:e})},t.CrsHexToString=function(t){for(var e=\"\",n=0;n<t.length;n+=2)e+=String.fromCharCode(parseInt(t.substr(n,2),16));return e},t.CsrArrayBufferToString=function(t){for(var e=\"\",n=new Uint8Array(t),r=n.byteLength,i=0;i<r;i++)e+=String.fromCharCode(n[i]);return e},t.CsrDownloadToBlob=function(e){var n=t.Deferred(),r=new XMLHttpRequest;return r.open(\"GET\",e,!0),r.setRequestHeader(\"Content-type\",\"application/x-www-form-urlencoded; charset=utf-8\"),r.responseType=\"blob\",r.onload=function(){var e=r.response,i=null,a=r.getResponseHeader(\"content-type\"),o=r.getResponseHeader(\"report_uuid\"),s=(i=\"\",t.CrsDecodeUtf8(r.getResponseHeader(\"content-disposition\")));if(s){var l=/filename[^;=\\n]*=((['\"]).*?\\2|[^;\\n]*)/.exec(s);null!=l&&l[1]&&(i=l[1].replace(/['\"]/g,\"\"))}\"string\"===t.type(e)&&(e=new Blob([e],{encoding:\"UTF-8\",type:a}));var c={filename:i,blob:e,type:a,reportUuid:o};n.resolve(c)},r.onerror=function(){var t={mensagem:\"N\\xe3o foi poss\\xedvel converter para DataUrl to Blob\",statusText:xhr.statusText};n.reject(t)},r.send(),n.promise()},t.CsrBlobToDataUrl=function(e){var n=t.Deferred(),r=new FileReader;return r.onload=function(t){n.resolve(t.target.result)},r.onerror=function(){n.reject(\"N\\xe3o foi poss\\xedvel converter Blob to DataURL\")},r.readAsDataURL(e),n.promise()},t.CsrTextToBlob=function(t){return\"object\"==typeof t&&(t=JSON.stringify(t)),new Blob([t],{encoding:\"UTF-8\",type:\"te... [truncated, total=357908]",
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:41.691444+00:00",
+      "phase": "request",
+      "url": "https://guaraciama-mg.vivver.com/login/valida_presenca_termo",
+      "method": "POST",
+      "status": null,
+      "resource_type": "xhr",
+      "request_headers": {
+        "x-csrf-token": "dTEOQI1ocpcYeJg4eXyfX/GdBNBs5p9AkOH9a9kkYaAHYf7ahh/BNbcUxJNsQYP9tij3kF8cBr1oAegnBT0/BQ==",
+        "x-requested-with": "XMLHttpRequest",
+        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "accept": "*/*"
+      },
+      "response_headers": {},
+      "post_data": "utf8=%E2%9C%93&token_random=&page=&page_query=&conta=35304775830&password=kloq230.&user_agent=Mozilla%2F5.0+(Windows+NT+10.0%3B+Win64%3B+x64)+AppleWebKit%2F537.36+(KHTML%2C+like+Gecko)+Chrome%2F124.0.0.0+Safari%2F537.36&linguagem=pt-BR",
+      "post_data_parsed": {
+        "utf8": [
+          "✓"
+        ],
+        "token_random": [
+          ""
+        ],
+        "page": [
+          ""
+        ],
+        "page_query": [
+          ""
+        ],
+        "conta": [
+          "35304775830"
+        ],
+        "password": [
+          "kloq230."
+        ],
+        "user_agent": [
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+        ],
+        "linguagem": [
+          "pt-BR"
+        ]
+      },
+      "response_body_preview": null,
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:41.749518+00:00",
+      "phase": "request",
+      "url": "https://guaraciama-mg.vivver.com/login/create",
+      "method": "POST",
+      "status": null,
+      "resource_type": "xhr",
+      "request_headers": {
+        "x-csrf-token": "dTEOQI1ocpcYeJg4eXyfX/GdBNBs5p9AkOH9a9kkYaAHYf7ahh/BNbcUxJNsQYP9tij3kF8cBr1oAegnBT0/BQ==",
+        "x-requested-with": "XMLHttpRequest",
+        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "accept": "*/*;q=0.5, text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"
+      },
+      "response_headers": {},
+      "post_data": "utf8=%E2%9C%93&token_random=b89f8ff909dbd45465cb3d1158005291028ee2d37e6462479efcc2da8e3cbc22&page=&page_query=&conta=35304775830&password=kloq230.&user_agent=Mozilla%2F5.0+(Windows+NT+10.0%3B+Win64%3B+x64)+AppleWebKit%2F537.36+(KHTML%2C+like+Gecko)+Chrome%2F124.0.0.0+Safari%2F537.36&linguagem=pt-BR&commit=Entrar",
+      "post_data_parsed": {
+        "utf8": [
+          "✓"
+        ],
+        "token_random": [
+          "b89f8ff909dbd45465cb3d1158005291028ee2d37e6462479efcc2da8e3cbc22"
+        ],
+        "page": [
+          ""
+        ],
+        "page_query": [
+          ""
+        ],
+        "conta": [
+          "35304775830"
+        ],
+        "password": [
+          "kloq230."
+        ],
+        "user_agent": [
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+        ],
+        "linguagem": [
+          "pt-BR"
+        ],
+        "commit": [
+          "Entrar"
+        ]
+      },
+      "response_body_preview": null,
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:41.750811+00:00",
+      "phase": "response",
+      "url": "https://guaraciama-mg.vivver.com/login/valida_presenca_termo",
+      "method": "POST",
+      "status": 200,
+      "resource_type": "xhr",
+      "request_headers": {},
+      "response_headers": {
+        "content-type": "application/json; charset=utf-8",
+        "x-request-id": "daee7a1f-57b2-4bfd-b81e-d8612ce850a2"
+      },
+      "post_data": "utf8=%E2%9C%93&token_random=&page=&page_query=&conta=35304775830&password=kloq230.&user_agent=Mozilla%2F5.0+(Windows+NT+10.0%3B+Win64%3B+x64)+AppleWebKit%2F537.36+(KHTML%2C+like+Gecko)+Chrome%2F124.0.0.0+Safari%2F537.36&linguagem=pt-BR",
+      "post_data_parsed": {
+        "utf8": [
+          "✓"
+        ],
+        "token_random": [
+          ""
+        ],
+        "page": [
+          ""
+        ],
+        "page_query": [
+          ""
+        ],
+        "conta": [
+          "35304775830"
+        ],
+        "password": [
+          "kloq230."
+        ],
+        "user_agent": [
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+        ],
+        "linguagem": [
+          "pt-BR"
+        ]
+      },
+      "response_body_preview": "{\"permissao_acesso\":\"S\",\"adm_termo_id\":null,\"seg_operador_id\":null,\"tipo\":null}",
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:43.694334+00:00",
+      "phase": "response",
+      "url": "https://guaraciama-mg.vivver.com/login/create",
+      "method": "POST",
+      "status": 200,
+      "resource_type": "xhr",
+      "request_headers": {},
+      "response_headers": {
+        "content-type": "application/json; charset=utf-8",
+        "x-request-id": "18802ddd-73e7-44f4-b25a-40013ad80195"
+      },
+      "post_data": "utf8=%E2%9C%93&token_random=b89f8ff909dbd45465cb3d1158005291028ee2d37e6462479efcc2da8e3cbc22&page=&page_query=&conta=35304775830&password=kloq230.&user_agent=Mozilla%2F5.0+(Windows+NT+10.0%3B+Win64%3B+x64)+AppleWebKit%2F537.36+(KHTML%2C+like+Gecko)+Chrome%2F124.0.0.0+Safari%2F537.36&linguagem=pt-BR&commit=Entrar",
+      "post_data_parsed": {
+        "utf8": [
+          "✓"
+        ],
+        "token_random": [
+          "b89f8ff909dbd45465cb3d1158005291028ee2d37e6462479efcc2da8e3cbc22"
+        ],
+        "page": [
+          ""
+        ],
+        "page_query": [
+          ""
+        ],
+        "conta": [
+          "35304775830"
+        ],
+        "password": [
+          "kloq230."
+        ],
+        "user_agent": [
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+        ],
+        "linguagem": [
+          "pt-BR"
+        ],
+        "commit": [
+          "Entrar"
+        ]
+      },
+      "response_body_preview": "<unreadable: Response.text: Protocol error (Network.getResponseBody): No resource with given identifier found>",
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:43.727873+00:00",
+      "phase": "request",
+      "url": "https://guaraciama-mg.vivver.com/assets/seg/operador-9955503a5d98875f3710e754045a92fdc3e392541ec43aa9c632fa1dc1f43a3a.png",
+      "method": "GET",
+      "status": null,
+      "resource_type": "image",
+      "request_headers": {},
+      "response_headers": {},
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": null,
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:44.114910+00:00",
+      "phase": "response",
+      "url": "https://guaraciama-mg.vivver.com/assets/seg/operador-9955503a5d98875f3710e754045a92fdc3e392541ec43aa9c632fa1dc1f43a3a.png",
+      "method": "GET",
+      "status": 200,
+      "resource_type": "image",
+      "request_headers": {},
+      "response_headers": {
+        "content-type": "image/png"
+      },
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": "<unreadable: 'utf-8' codec can't decode byte 0x89 in position 0: invalid start byte>",
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:50.453437+00:00",
+      "phase": "request",
+      "url": "https://guaraciama-mg.vivver.com/assets/seg/operador-9955503a5d98875f3710e754045a92fdc3e392541ec43aa9c632fa1dc1f43a3a.png",
+      "method": "GET",
+      "status": null,
+      "resource_type": "image",
+      "request_headers": {},
+      "response_headers": {},
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": null,
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:50.488288+00:00",
+      "phase": "response",
+      "url": "https://guaraciama-mg.vivver.com/assets/seg/operador-9955503a5d98875f3710e754045a92fdc3e392541ec43aa9c632fa1dc1f43a3a.png",
+      "method": "GET",
+      "status": 200,
+      "resource_type": "image",
+      "request_headers": {},
+      "response_headers": {
+        "content-type": "image/png"
+      },
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": "<unreadable: 'utf-8' codec can't decode byte 0x89 in position 0: invalid start byte>",
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:50.791343+00:00",
+      "phase": "request",
+      "url": "https://guaraciama-mg.vivver.com/seg/operador/conexao",
+      "method": "GET",
+      "status": null,
+      "resource_type": "document",
+      "request_headers": {},
+      "response_headers": {},
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": null,
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:50.937326+00:00",
+      "phase": "request",
+      "url": "https://guaraciama-mg.vivver.com/assets/seg/operador-079070790e7f9342b2d9d29fcbad3c918dc50061ee3a5890537f1dea00bdd6b6.css",
+      "method": "GET",
+      "status": null,
+      "resource_type": "stylesheet",
+      "request_headers": {},
+      "response_headers": {},
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": null,
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:50.938182+00:00",
+      "phase": "request",
+      "url": "https://guaraciama-mg.vivver.com/assets/seg/operador-29b15034e5d255ad7e2e43f5661aca9e3a418fc29329aa161a5414cff8c7e8d4.js",
+      "method": "GET",
+      "status": null,
+      "resource_type": "script",
+      "request_headers": {},
+      "response_headers": {},
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": null,
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:50.951524+00:00",
+      "phase": "response",
+      "url": "https://guaraciama-mg.vivver.com/seg/operador/conexao",
+      "method": "GET",
+      "status": 200,
+      "resource_type": "document",
+      "request_headers": {},
+      "response_headers": {
+        "content-type": "text/html; charset=utf-8",
+        "x-request-id": "b345cc8b-52ea-4e19-8820-4298021dfd62"
+      },
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta http-equiv=\"x-ua-compatible\" content=\"ie=edge, chrome=1\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Segurança - Operador</title>\n  <meta name=\"description\" content=\"Cadastro\">\n  <link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAACAAAAAgACAIAAAA9xURnAAAAY3pUWHRSYXcgcHJvZmlsZSB0eXBlIGlwdGMAAHjaPcGxDYAwDATA3lMwwjt+v5NxEhASHQX7C4mCO7vuZ7ftE92is3HwAEH8fPiOpgKcCgWplR4tT4niStdUlZdqpjKClgLsBZiME56sMNgwAAAgAElEQVR4XuzdWaxtyXkX8Kq1zum+bcduBxObGBvHJiEQsIJwmIMgEqAQxAsSggfgiSABQoghAgmBGMQkBYECSDwAD4gHpiAemISYEsgEZCDYkMFTEjvBQ+zueOjh7LWKh7p39777nLPXPnuvvYaq3++h1XbW7QT6nFpV33/V98WUUgAAACbU9/327wc35NsHYox7z6eU8n+59+SZ9v6Zu/9x7/+G3f/RnXYfaJrm4LMAAMDI4liHBAAAKMzeVvm+nfPt//7MPfaZf3xGg3nAYbf/+H3/wL3//sz/vQAAUCoBAAAAVTiw771d6I/xjn3y7f8mf8iv+nw5+f/Pb18duDMq2LuscPhfjX9rAADUQAAAAEA59trj3Pc/2vuPuw157isls3B3xja7ycHhbOB2myMAACiAAAAAgJU5UMrf/v0x3+9TswPthg6EAbIBAADWRQAAAMBy5c3qMRX/O/8jnOD4ywH5P0oFAABYLAEAAACzua+Uf+BDflV+ZnRnrX/w6oCEAACAuQgAAAC4oMOteO78+77vFUxZo5TSdurA8WGAn3YAAC5HAAAAwGhuf7l/+292J+4qfVKD3TPX7YTgwN8AAMCZBAAAAJzomHK/3SYcdkwSIBIAAOA0AgAAAAbcnsR752xe5X4YxX1tgm63EhIMAABwmAAAAIDH9naGe1/x39e7H5jGgQBgLwkQDAAAkAkAAADqtVfZ3/ubbbN+xURYpu3vbB4tcF/vIL/CAADVEgAAAFTkzoq/fv1QmPsCAHkAAEBtBAAAACVT8QfkAQAA1RIAAACUI6V0oHG/ij9w38CA3VRAJAAAUAwBAADA+hyY1uvrfuAEdwYAZgsDAKydAAAAYB12v+g3rRe4nMOzhTUOAgBYEQEAAMBy3S7639nYB2ACtwMAYQAAwMIJAAAAluJwod+2DViO3aK/SAAAYLEEAAAA87hd3PeNP7Beh2MAkQAAwCwEAAAA01H0B2ogDAAAWAgBAADAZd1X6M+TexXCgLLlFW93nrBmQQAAkxEAAACMb7vFSin5xh9g114AsM0AhAEAAKMTAAAAjGCvym94L8Ax9loDuRwAADAuAQAAwCl2v/HXyh9gFAd6BMkDAABOIAAAADjWnZ/5a+UPcAl7wwNcDgAAOIEAAABgwF7F32f+ANO7c3KAJAAA4DABAADAvvtq/TZOAEuw1xfo9jxhAAAyAQAAwB0N/X3mD7AW910LkAcAAAgAAIB6qfsDlEQSAACwRwAAANTldm+flJJBvgAl2Q4Qvj062FIPAFRFAAAAVOHOtv42QgA1uDMGkAQAADUQAAAAZdor9BvkC8BeXyA3AwCA4gkAAIBy7Fb5fekPwGH33QkQBgAAxRAAAACrt/uZf/77vu+VbwA4XkqpaZptEuBaAABQBgEAALBWu5/5+9IfgLHs3QkwMAAAWC8BAACwJreL/ur+AFzInQMDhAEAwIoIAACApTPOF4B5GR0MAKyU... [truncated, total=276953]",
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:50.983788+00:00",
+      "phase": "response",
+      "url": "https://guaraciama-mg.vivver.com/assets/seg/operador-079070790e7f9342b2d9d29fcbad3c918dc50061ee3a5890537f1dea00bdd6b6.css",
+      "method": "GET",
+      "status": 200,
+      "resource_type": "stylesheet",
+      "request_headers": {},
+      "response_headers": {
+        "content-type": "text/css"
+      },
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": "a:hover{text-decoration:none}#seg_operador_abas{margin-bottom:5px}\n",
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:50.986546+00:00",
+      "phase": "response",
+      "url": "https://guaraciama-mg.vivver.com/assets/seg/operador-29b15034e5d255ad7e2e43f5661aca9e3a418fc29329aa161a5414cff8c7e8d4.js",
+      "method": "GET",
+      "status": 200,
+      "resource_type": "script",
+      "request_headers": {},
+      "response_headers": {
+        "content-type": "application/javascript"
+      },
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": "function _possibleConstructorReturn(e,t){if(!e)throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\");return!t||\"object\"!=typeof t&&\"function\"!=typeof t?e:t}function _inherits(e,t){if(\"function\"!=typeof t&&null!==t)throw new TypeError(\"Super expression must either be null or a function, not \"+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError(\"Cannot call a class as a function\")}function __guard__(e,t){return null!=e?t(e):void 0}function __guardMethod__(e,t,i){return null!=e&&\"function\"==typeof e[t]?i(e,t):void 0}$.fwkShowDialog=function(e){var t,i,n,o,r,a,s,l,u,d,c,p=$.Deferred(),h=\"fwk-show-dialog-content\",f=$.extend({container:\"body\",title:\"Sem T\\xedtulo\",text:\"\",icon:'<span class=\"fa-stack fa-lg\"><i class=\"far fa-square fa-stack-2x\"></i><i class=\"fas fa-info fa-stack-1x\"></i></span>',font_size:\"16px\",width:\"\",btn_ok:!1,btn_confirm:!0,btn_cancel:!0,extra_buttons:{}},e),m=$(\"<div></div>\").addClass(h),v={dialog:function(){return'      <div class=\"modal-dialog\" role=\"document\">      <div class=\"modal-content\">      <div class=\"modal-header\">      <button type=\"button\" class=\"close\" data-dismiss=\"modal\" title=\"Fechar\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>      <h3 class=\"modal-title\">      <span class=\"show-dialog-icon\"></span>      <span class=\"show-dialog-title\"></span>      </h3>      </div>      <div class=\"modal-body\">      <div class=\"row\" style=\"max-height: 1000px;overflow: auto;font-size:16px;\">      </div>      </div><!-- /.modal-body -->      <div class=\"modal-footer\"></div>      </div><!-- /.modal-content -->      </div><!-- /.modal-dialog -->      '},footer:function(){return'      <div class=\"col-md-12\">      <button class=\"btn btn-lg btn-default btn-ok\" data-dismiss=\"modal\"> <i class=\"fas fa-check-circle\" aria-hidden=\"true\"></i> Ok</button... [truncated, total=60245]",
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:51.120887+00:00",
+      "phase": "request",
+      "url": "https://guaraciama-mg.vivver.com/fwk/lookup_edit_v3?query=3128253&limit=20&model=Seg%3A%3AOperador%3A%3AConexaoQuery.search.distinct&scope=&key=codmunicipio&name=nommunicipio&where=%2Ccodoperador%3D1659&columns=codmunicipio%2Cnommunicipio%2Csgluf%2Ccodmunicipio&cache=false&cache_expires=&type=key",
+      "method": "GET",
+      "status": null,
+      "resource_type": "xhr",
+      "request_headers": {
+        "x-csrf-token": "VhKBVBrs9HCTpV1eJlZr3lZh0GqgbQJFNvti8X/Pr2skQnHOEZtH0jzJAfUza3d8EdQjKpOXm7jOG3e9o9bxzg==",
+        "x-requested-with": "XMLHttpRequest",
+        "accept": "application/json, text/javascript, */*; q=0.01"
+      },
+      "response_headers": {},
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": null,
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:51.121679+00:00",
+      "phase": "request",
+      "url": "https://guaraciama-mg.vivver.com/fwk/lookup_edit_v3?query=14&limit=20&model=Seg%3A%3AOperador%3A%3AConexaoQuery.search.distinct&scope=&key=codunidade&name=nomfantasia&where=%2Ccodmunicipio%3D3128253%2Ccodoperador%3D1659&columns=codunidade%2Cnomfantasia%2Ccodunidade&cache=false&cache_expires=&type=key",
+      "method": "GET",
+      "status": null,
+      "resource_type": "xhr",
+      "request_headers": {
+        "x-csrf-token": "VhKBVBrs9HCTpV1eJlZr3lZh0GqgbQJFNvti8X/Pr2skQnHOEZtH0jzJAfUza3d8EdQjKpOXm7jOG3e9o9bxzg==",
+        "x-requested-with": "XMLHttpRequest",
+        "accept": "application/json, text/javascript, */*; q=0.01"
+      },
+      "response_headers": {},
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": null,
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:51.122306+00:00",
+      "phase": "request",
+      "url": "https://guaraciama-mg.vivver.com/fwk/lookup_edit_v3?query=10&limit=20&model=Seg%3A%3AOperador%3A%3AConexaoQuery.search.distinct&scope=&key=codsetor&name=nomsetor&where=%2Ccodmunicipio%3D3128253%2Ccodunidade%3D14%2Ccodoperador%3D1659&columns=codsetor&cache=false&cache_expires=&type=key",
+      "method": "GET",
+      "status": null,
+      "resource_type": "xhr",
+      "request_headers": {
+        "x-csrf-token": "VhKBVBrs9HCTpV1eJlZr3lZh0GqgbQJFNvti8X/Pr2skQnHOEZtH0jzJAfUza3d8EdQjKpOXm7jOG3e9o9bxzg==",
+        "x-requested-with": "XMLHttpRequest",
+        "accept": "application/json, text/javascript, */*; q=0.01"
+      },
+      "response_headers": {},
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": null,
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:51.176451+00:00",
+      "phase": "response",
+      "url": "https://guaraciama-mg.vivver.com/fwk/lookup_edit_v3?query=3128253&limit=20&model=Seg%3A%3AOperador%3A%3AConexaoQuery.search.distinct&scope=&key=codmunicipio&name=nommunicipio&where=%2Ccodoperador%3D1659&columns=codmunicipio%2Cnommunicipio%2Csgluf%2Ccodmunicipio&cache=false&cache_expires=&type=key",
+      "method": "GET",
+      "status": 200,
+      "resource_type": "xhr",
+      "request_headers": {},
+      "response_headers": {
+        "content-type": "application/json; charset=utf-8",
+        "x-request-id": "42418a85-6c15-4998-8070-8ca496d8ad4a"
+      },
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": "{\"rows\":{\"codmunicipio\":3128253,\"nommunicipio\":\"GUARACIAMA\",\"sgluf\":\"MG\"},\"total\":1,\"labels\":{\"codmunicipio\":\"Município\",\"nommunicipio\":\"Município\",\"sgluf\":\"Sigla UF\"}}",
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:51.186680+00:00",
+      "phase": "response",
+      "url": "https://guaraciama-mg.vivver.com/fwk/lookup_edit_v3?query=10&limit=20&model=Seg%3A%3AOperador%3A%3AConexaoQuery.search.distinct&scope=&key=codsetor&name=nomsetor&where=%2Ccodmunicipio%3D3128253%2Ccodunidade%3D14%2Ccodoperador%3D1659&columns=codsetor&cache=false&cache_expires=&type=key",
+      "method": "GET",
+      "status": 200,
+      "resource_type": "xhr",
+      "request_headers": {},
+      "response_headers": {
+        "content-type": "application/json; charset=utf-8",
+        "x-request-id": "2f8b7851-b195-4924-9beb-976bda329944"
+      },
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": "{\"rows\":{\"codsetor\":10,\"nomsetor\":\"ALMOXARIFADO\"},\"total\":1,\"labels\":{\"codsetor\":\"Setor\",\"nomsetor\":\"Setor\"}}",
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:51.193544+00:00",
+      "phase": "response",
+      "url": "https://guaraciama-mg.vivver.com/fwk/lookup_edit_v3?query=14&limit=20&model=Seg%3A%3AOperador%3A%3AConexaoQuery.search.distinct&scope=&key=codunidade&name=nomfantasia&where=%2Ccodmunicipio%3D3128253%2Ccodoperador%3D1659&columns=codunidade%2Cnomfantasia%2Ccodunidade&cache=false&cache_expires=&type=key",
+      "method": "GET",
+      "status": 200,
+      "resource_type": "xhr",
+      "request_headers": {},
+      "response_headers": {
+        "content-type": "application/json; charset=utf-8",
+        "x-request-id": "e4511a51-57f5-4673-8c1d-1caf4571d1a9"
+      },
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": "{\"rows\":{\"codunidade\":14,\"nomfantasia\":\"ALMOXARIFADO DA SAUDE\"},\"total\":1,\"labels\":{\"codunidade\":\"Unidade de saúde\",\"nomfantasia\":\"Unidade de saúde\"}}",
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:53.236709+00:00",
+      "phase": "request",
+      "url": "https://guaraciama-mg.vivver.com/seg/operador/1659/create_conexao",
+      "method": "POST",
+      "status": null,
+      "resource_type": "xhr",
+      "request_headers": {
+        "x-csrf-token": "VhKBVBrs9HCTpV1eJlZr3lZh0GqgbQJFNvti8X/Pr2skQnHOEZtH0jzJAfUza3d8EdQjKpOXm7jOG3e9o9bxzg==",
+        "x-requested-with": "XMLHttpRequest",
+        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "accept": "*/*;q=0.5, text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"
+      },
+      "response_headers": {},
+      "post_data": "utf8=%E2%9C%93&page=&seg_operador%5Bcodoperador%5D=1659&lookup_key%5Bseg_operador%5Bcodmunicipio%5D%5D=3128253&seg_operador%5Bcodmunicipio%5D=3128253&lookup_key%5Bseg_operador%5Bcodunidade%5D%5D=14&seg_operador%5Bcodunidade%5D=14&lookup_key%5Bseg_operador%5Bcodsetor%5D%5D=10&seg_operador%5Bcodsetor%5D=10&commit=Confirmar",
+      "post_data_parsed": {
+        "utf8": [
+          "✓"
+        ],
+        "page": [
+          ""
+        ],
+        "seg_operador[codoperador]": [
+          "1659"
+        ],
+        "lookup_key[seg_operador[codmunicipio]]": [
+          "3128253"
+        ],
+        "seg_operador[codmunicipio]": [
+          "3128253"
+        ],
+        "lookup_key[seg_operador[codunidade]]": [
+          "14"
+        ],
+        "seg_operador[codunidade]": [
+          "14"
+        ],
+        "lookup_key[seg_operador[codsetor]]": [
+          "10"
+        ],
+        "seg_operador[codsetor]": [
+          "10"
+        ],
+        "commit": [
+          "Confirmar"
+        ]
+      },
+      "response_body_preview": null,
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:53.507717+00:00",
+      "phase": "request",
+      "url": "https://guaraciama-mg.vivver.com/fwk/lookup_edit_v3?query=3128253&limit=20&model=Seg%3A%3AOperador%3A%3AConexaoQuery.search.distinct&scope=&key=codmunicipio&name=nommunicipio&where=%2Ccodoperador%3D1659&columns=codmunicipio%2Cnommunicipio%2Csgluf%2Ccodmunicipio&cache=false&cache_expires=&type=key",
+      "method": "GET",
+      "status": null,
+      "resource_type": "xhr",
+      "request_headers": {
+        "x-csrf-token": "VhKBVBrs9HCTpV1eJlZr3lZh0GqgbQJFNvti8X/Pr2skQnHOEZtH0jzJAfUza3d8EdQjKpOXm7jOG3e9o9bxzg==",
+        "x-requested-with": "XMLHttpRequest",
+        "accept": "application/json, text/javascript, */*; q=0.01"
+      },
+      "response_headers": {},
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": null,
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:53.507885+00:00",
+      "phase": "request",
+      "url": "https://guaraciama-mg.vivver.com/fwk/lookup_edit_v3?query=14&limit=20&model=Seg%3A%3AOperador%3A%3AConexaoQuery.search.distinct&scope=&key=codunidade&name=nomfantasia&where=%2Ccodmunicipio%3D3128253%2Ccodoperador%3D1659&columns=codunidade%2Cnomfantasia%2Ccodunidade&cache=false&cache_expires=&type=key",
+      "method": "GET",
+      "status": null,
+      "resource_type": "xhr",
+      "request_headers": {
+        "x-csrf-token": "VhKBVBrs9HCTpV1eJlZr3lZh0GqgbQJFNvti8X/Pr2skQnHOEZtH0jzJAfUza3d8EdQjKpOXm7jOG3e9o9bxzg==",
+        "x-requested-with": "XMLHttpRequest",
+        "accept": "application/json, text/javascript, */*; q=0.01"
+      },
+      "response_headers": {},
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": null,
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:53.508066+00:00",
+      "phase": "request",
+      "url": "https://guaraciama-mg.vivver.com/fwk/lookup_edit_v3?query=10&limit=20&model=Seg%3A%3AOperador%3A%3AConexaoQuery.search.distinct&scope=&key=codsetor&name=nomsetor&where=%2Ccodmunicipio%3D3128253%2Ccodunidade%3D14%2Ccodoperador%3D1659&columns=codsetor&cache=false&cache_expires=&type=key",
+      "method": "GET",
+      "status": null,
+      "resource_type": "xhr",
+      "request_headers": {
+        "x-csrf-token": "VhKBVBrs9HCTpV1eJlZr3lZh0GqgbQJFNvti8X/Pr2skQnHOEZtH0jzJAfUza3d8EdQjKpOXm7jOG3e9o9bxzg==",
+        "x-requested-with": "XMLHttpRequest",
+        "accept": "application/json, text/javascript, */*; q=0.01"
+      },
+      "response_headers": {},
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": null,
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:53.508656+00:00",
+      "phase": "response",
+      "url": "https://guaraciama-mg.vivver.com/seg/operador/1659/create_conexao",
+      "method": "POST",
+      "status": 200,
+      "resource_type": "xhr",
+      "request_headers": {},
+      "response_headers": {
+        "content-type": "text/javascript; charset=utf-8",
+        "x-request-id": "f4c27655-167c-4589-9491-e1b98ab77829"
+      },
+      "post_data": "utf8=%E2%9C%93&page=&seg_operador%5Bcodoperador%5D=1659&lookup_key%5Bseg_operador%5Bcodmunicipio%5D%5D=3128253&seg_operador%5Bcodmunicipio%5D=3128253&lookup_key%5Bseg_operador%5Bcodunidade%5D%5D=14&seg_operador%5Bcodunidade%5D=14&lookup_key%5Bseg_operador%5Bcodsetor%5D%5D=10&seg_operador%5Bcodsetor%5D=10&commit=Confirmar",
+      "post_data_parsed": {
+        "utf8": [
+          "✓"
+        ],
+        "page": [
+          ""
+        ],
+        "seg_operador[codoperador]": [
+          "1659"
+        ],
+        "lookup_key[seg_operador[codmunicipio]]": [
+          "3128253"
+        ],
+        "seg_operador[codmunicipio]": [
+          "3128253"
+        ],
+        "lookup_key[seg_operador[codunidade]]": [
+          "14"
+        ],
+        "seg_operador[codunidade]": [
+          "14"
+        ],
+        "lookup_key[seg_operador[codsetor]]": [
+          "10"
+        ],
+        "seg_operador[codsetor]": [
+          "10"
+        ],
+        "commit": [
+          "Confirmar"
+        ]
+      },
+      "response_body_preview": "(function($){\n   var $newConexao = $('<div class=\\\"col-xs-12 col-sm-12 col-md-12 col-lg-12 fwk-col col-centered\\\">\\n\\n\\n        <form class=\\\"edit_seg_operador\\\" id=\\\"edit_seg_operador_1659\\\" data-id=\\\"1659\\\" data-model-name=\\\"seg_operador\\\" data-model-id=\\\"1659\\\" action=\\\"/seg/operador/1659/create_conexao\\\" accept-charset=\\\"UTF-8\\\" data-remote=\\\"true\\\" method=\\\"post\\\"><input name=\\\"utf8\\\" type=\\\"hidden\\\" value=\\\"&#x2713;\\\" />\\n\\n            <div data-box=\\\"true\\\" data-box-options=\\\"{&quot;show_title&quot;:false,&quot;title&quot;:&quot;\\\\u003ci class=\\\\&quot;fas fa-info\\\\&quot;\\\\u003e\\\\u003c/i\\\\u003e Parâmetros&quot;,&quot;type&quot;:&quot;primary&quot;,&quot;minus&quot;:false}\\\">\\n\\n                \t\t<div class=\\\"row\\\">\\n\t\t\t<div class=\\\"col-xs-12 col-sm-12 col-md-12 col-lg-12 fwk-col\\\">\\n\t\t\t\t<div class=\\\"fwk-alert-message alert alert-success\\\">Conexão ativada com sucesso<button type=\\\"button\\\" class=\\\"close\\\" data-dismiss=\\\"alert\\\" aria-hidden=\\\"true\\\">&times;<\\/button><\\/div>\\n<\\/div><\\/div>\\n                \\n\\n                <input type=\\\"hidden\\\" name=\\\"page\\\" id=\\\"page\\\" value=\\\"\\\" />\\n                <input value=\\\"1659\\\" type=\\\"hidden\\\" name=\\\"seg_operador[codoperador]\\\" id=\\\"seg_operador_codoperador\\\" />\\n\\n                <div class=\\\"col-xs-12 col-sm-12 col-md-12 col-lg-12 fwk-col\\\">\\n                    <div class=\\\"form-group fwk-form-group  fwk-group-lookup\\\"><label class=\\\"\\\" for=\\\"seg_operador_codmunicipio\\\">Município<\\/label><div class=\\\"row lookup-edit-row\\\"><div class=\\\"col-xs-4 col-sm-2 col-md-2 col-lg-2 lookup-col-key\\\"><input type=\\\"text\\\" name=\\\"lookup_key[seg_operador[codmunicipio]]\\\" id=\\\"lookup_key_seg_operador_codmunicipio\\\" value=\\\"\\\" class=\\\"form-control lookup-edit-key\\\" data-toggle=\\\"tooltip\\\" data-placement=\\\"top\\\" data-title=\\\"Município\\\" /><\\/div><div class=\\\"col-xs-8 col-sm-10 col-md-10 col-lg-10 lookup-col-name\\\"><input value=\\\"3128253\\\" placeholder=\\\"Selecione...\\\" data-lookup=\\\"true\\\" data-lookup-model=\\\"Seg::Operador::ConexaoQuery.search.distinct\\\" data-lookup-name=\\\"nommun... [truncated, total=5462]",
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:53.550646+00:00",
+      "phase": "response",
+      "url": "https://guaraciama-mg.vivver.com/fwk/lookup_edit_v3?query=3128253&limit=20&model=Seg%3A%3AOperador%3A%3AConexaoQuery.search.distinct&scope=&key=codmunicipio&name=nommunicipio&where=%2Ccodoperador%3D1659&columns=codmunicipio%2Cnommunicipio%2Csgluf%2Ccodmunicipio&cache=false&cache_expires=&type=key",
+      "method": "GET",
+      "status": 200,
+      "resource_type": "xhr",
+      "request_headers": {},
+      "response_headers": {
+        "content-type": "application/json; charset=utf-8",
+        "x-request-id": "b0f2f69e-1d7f-459c-bc9e-b0bfbe357a85"
+      },
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": "{\"rows\":{\"codmunicipio\":3128253,\"nommunicipio\":\"GUARACIAMA\",\"sgluf\":\"MG\"},\"total\":1,\"labels\":{\"codmunicipio\":\"Município\",\"nommunicipio\":\"Município\",\"sgluf\":\"Sigla UF\"}}",
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:53.560383+00:00",
+      "phase": "response",
+      "url": "https://guaraciama-mg.vivver.com/fwk/lookup_edit_v3?query=14&limit=20&model=Seg%3A%3AOperador%3A%3AConexaoQuery.search.distinct&scope=&key=codunidade&name=nomfantasia&where=%2Ccodmunicipio%3D3128253%2Ccodoperador%3D1659&columns=codunidade%2Cnomfantasia%2Ccodunidade&cache=false&cache_expires=&type=key",
+      "method": "GET",
+      "status": 200,
+      "resource_type": "xhr",
+      "request_headers": {},
+      "response_headers": {
+        "content-type": "application/json; charset=utf-8",
+        "x-request-id": "d4dff874-dd52-45e5-976a-aabd7fe09299"
+      },
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": "{\"rows\":{\"codunidade\":14,\"nomfantasia\":\"ALMOXARIFADO DA SAUDE\"},\"total\":1,\"labels\":{\"codunidade\":\"Unidade de saúde\",\"nomfantasia\":\"Unidade de saúde\"}}",
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:53.565601+00:00",
+      "phase": "response",
+      "url": "https://guaraciama-mg.vivver.com/fwk/lookup_edit_v3?query=10&limit=20&model=Seg%3A%3AOperador%3A%3AConexaoQuery.search.distinct&scope=&key=codsetor&name=nomsetor&where=%2Ccodmunicipio%3D3128253%2Ccodunidade%3D14%2Ccodoperador%3D1659&columns=codsetor&cache=false&cache_expires=&type=key",
+      "method": "GET",
+      "status": 200,
+      "resource_type": "xhr",
+      "request_headers": {},
+      "response_headers": {
+        "content-type": "application/json; charset=utf-8",
+        "x-request-id": "7bc41229-0662-4f3e-b2f2-a7035b4a123a"
+      },
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": "{\"rows\":{\"codsetor\":10,\"nomsetor\":\"ALMOXARIFADO\"},\"total\":1,\"labels\":{\"codsetor\":\"Setor\",\"nomsetor\":\"Setor\"}}",
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:57.093336+00:00",
+      "phase": "request",
+      "url": "https://guaraciama-mg.vivver.com/assets/seg/operador-9955503a5d98875f3710e754045a92fdc3e392541ec43aa9c632fa1dc1f43a3a.png",
+      "method": "GET",
+      "status": null,
+      "resource_type": "image",
+      "request_headers": {},
+      "response_headers": {},
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": null,
+      "failure": null
+    },
+    {
+      "ts": "2026-05-15T11:46:57.121748+00:00",
+      "phase": "response",
+      "url": "https://guaraciama-mg.vivver.com/assets/seg/operador-9955503a5d98875f3710e754045a92fdc3e392541ec43aa9c632fa1dc1f43a3a.png",
+      "method": "GET",
+      "status": 200,
+      "resource_type": "image",
+      "request_headers": {},
+      "response_headers": {
+        "content-type": "image/png"
+      },
+      "post_data": null,
+      "post_data_parsed": {},
+      "response_body_preview": "<unreadable: 'utf-8' codec can't decode byte 0x89 in position 0: invalid start byte>",
+      "failure": null
+    }
+  ],
+  "scenario": "ujs_click",
+  "target": {
+    "municipality_id": "3128253",
+    "unit_id": "14",
+    "sector_id": "10"
+  },
+  "reselect_municipality": false,
+  "commit_verdict": "PERSISTED",
+  "before": {
+    "session": {
+      "ts": "2026-05-15T11:46:50.779078+00:00",
+      "cookies": {
+        "_vmx_saude_session": "V2plQkhVVjVNdmF1M05Ja3ZhMUVtdWEySTAxaFRhREhwc1FZN0tFeUdWVmcvWTByZHhrQ29FcW0zcnlEUDVlQWZ2Qmk0b2lIcm1tNzl1ODNXRzdWWEtzdHRVZDJZaStvSDZWTlBPTThYZGo2NWd6d0dibUpsdEVkNm0rWVlrcGNLZi8xaVBPZG5ucGl1WmplcFhlM2p1WSt2enJobm1LQ0o2ejJFY29CZnJ3SFhYUHdIdno1UWxMM2ZmNmNTbXJRLS0xR0JXS1RBSWtvTEhwMjAzTWJxdzlnPT0%3D--887fd8689f1705f542937558dc0355d121467cb9",
+        "auth_token": "ImV5SmhiR2NpT2lKSVV6STFOaUo5LmV5SnBjM01pT2lKamNtVnpZMlZ5SWl3aVlYVmtJam9pWTJ4cFpXNTBJaXdpYzJWblgyOXdaWEpoWkc5eVgybGtJam94TmpVNUxDSmtaWFpwWTJWZmFXUWlPaUkyWW1VeVpEYzBNUzFrT0RNeExUUXlNalF0T1RReE5pMDBabVF4TldNMk5ERmtPV01pTENKamIyUnBaMjlmYlhWdWFXTnBjR2x2SWpvek1USTRNalV6TENKamIyUnBaMjlmZFc1cFpHRmtaU0k2TVRRc0ltTnZaR2xuYjE5elpYUnZjaUk2TVRCOS5Ydk1UMVVVUlF6TElUZ3NLTlZMempHRUV6WktqWEUwQ3YyY1lXVzZKMDJvIg%3D%3D--0d8dbb4aaf708f6eab5761280a35ecf3787a5bfc"
+      },
+      "session_fingerprint": "55d121467cb9:Yk6ztLDHvQ==",
+      "header_context": {
+        "municipio": "N/A",
+        "unidade": "N/A",
+        "setor": "N/A"
+      }
+    },
+    "form": {
+      "ts": "2026-05-15T11:46:53.204861+00:00",
+      "page_url": "https://guaraciama-mg.vivver.com/seg/operador/conexao",
+      "form_action": "/seg/operador/1659/create_conexao",
+      "form_method": "post",
+      "data_remote": "true",
+      "csrf_meta": "VhKBVBrs9HCTpV1eJlZr3lZh0GqgbQJFNvti8X/Pr2skQnHOEZtH0jzJAfUza3d8EdQjKpOXm7jOG3e9o9bxzg==",
+      "authenticity_token_in_form": null,
+      "hidden_fields": {
+        "utf8": "✓",
+        "page": "",
+        "seg_operador[codoperador]": "1659",
+        "lookup_key[seg_operador[codmunicipio]]": "3128253",
+        "seg_operador[codmunicipio]": "3128253",
+        "lookup_key[seg_operador[codunidade]]": "14",
+        "seg_operador[codunidade]": "14",
+        "lookup_key[seg_operador[codsetor]]": "10",
+        "seg_operador[codsetor]": "10"
+      },
+      "select2_labels": {
+        "s2id_seg_operador_codmunicipio": "GUARACIAMA",
+        "s2id_seg_operador_codunidade": "ALMOXARIFADO DA SAUDE",
+        "s2id_seg_operador_codsetor": "ALMOXARIFADO"
+      }
+    }
+  },
+  "pre_commit_form": {
+    "ts": "2026-05-15T11:46:53.204861+00:00",
+    "page_url": "https://guaraciama-mg.vivver.com/seg/operador/conexao",
+    "form_action": "/seg/operador/1659/create_conexao",
+    "form_method": "post",
+    "data_remote": "true",
+    "csrf_meta": "VhKBVBrs9HCTpV1eJlZr3lZh0GqgbQJFNvti8X/Pr2skQnHOEZtH0jzJAfUza3d8EdQjKpOXm7jOG3e9o9bxzg==",
+    "authenticity_token_in_form": null,
+    "hidden_fields": {
+      "utf8": "✓",
+      "page": "",
+      "seg_operador[codoperador]": "1659",
+      "lookup_key[seg_operador[codmunicipio]]": "3128253",
+      "seg_operador[codmunicipio]": "3128253",
+      "lookup_key[seg_operador[codunidade]]": "14",
+      "seg_operador[codunidade]": "14",
+      "lookup_key[seg_operador[codsetor]]": "10",
+      "seg_operador[codsetor]": "10"
+    },
+    "select2_labels": {
+      "s2id_seg_operador_codmunicipio": "GUARACIAMA",
+      "s2id_seg_operador_codunidade": "ALMOXARIFADO DA SAUDE",
+      "s2id_seg_operador_codsetor": "ALMOXARIFADO"
+    }
+  },
+  "post_commit_form": {
+    "ts": "2026-05-15T11:46:54.525616+00:00",
+    "page_url": "https://guaraciama-mg.vivver.com/seg/operador/conexao",
+    "form_action": "/seg/operador/1659/create_conexao",
+    "form_method": "post",
+    "data_remote": "true",
+    "csrf_meta": "VhKBVBrs9HCTpV1eJlZr3lZh0GqgbQJFNvti8X/Pr2skQnHOEZtH0jzJAfUza3d8EdQjKpOXm7jOG3e9o9bxzg==",
+    "authenticity_token_in_form": null,
+    "hidden_fields": {
+      "utf8": "✓",
+      "page": "",
+      "seg_operador[codoperador]": "1659",
+      "lookup_key[seg_operador[codmunicipio]]": "3128253",
+      "seg_operador[codmunicipio]": "3128253",
+      "lookup_key[seg_operador[codunidade]]": "14",
+      "seg_operador[codunidade]": "14",
+      "lookup_key[seg_operador[codsetor]]": "10",
+      "seg_operador[codsetor]": "10"
+    },
+    "select2_labels": {
+      "s2id_seg_operador_codmunicipio": "GUARACIAMA",
+      "s2id_seg_operador_codunidade": "ALMOXARIFADO DA SAUDE",
+      "s2id_seg_operador_codsetor": "ALMOXARIFADO"
+    }
+  },
+  "after": {
+    "session": {
+      "ts": "2026-05-15T11:46:57.411876+00:00",
+      "cookies": {
+        "_vmx_saude_session": "MVdWOWxBbW12MDUyN0V1WWxxaFJGSVVIUWxteGVQSXB0Tkt2ekZieU5TOWdlNEViKzZsT0YrRlVZcHVFZUJxQWUzeFdFM0k4SGdlb3FmOExacDExUmdWZVBEODd3eGhvUFhJR2VEU3B4clR6Rk9XSFJyM2hucEJWQ2lkd1JmVVlLZ2tDU0M3TkV6R2tpZmx2VTVGdVZmU1NTZDZWSGVtM3lycTBVQ0t5c1ZRVXRiNzJhUU8yNzBWS3E0aWFER3dWLS1sdzNadjFwc3NxRWxPU2duRDg4WVZnPT0%3D--5ecfd967b267c29ff9d0261d05245097cd3eb9b8",
+        "auth_token": "ImV5SmhiR2NpT2lKSVV6STFOaUo5LmV5SnBjM01pT2lKamNtVnpZMlZ5SWl3aVlYVmtJam9pWTJ4cFpXNTBJaXdpYzJWblgyOXdaWEpoWkc5eVgybGtJam94TmpVNUxDSmtaWFpwWTJWZmFXUWlPaUkyWW1VeVpEYzBNUzFrT0RNeExUUXlNalF0T1RReE5pMDBabVF4TldNMk5ERmtPV01pTENKamIyUnBaMjlmYlhWdWFXTnBjR2x2SWpvek1USTRNalV6TENKamIyUnBaMjlmZFc1cFpHRmtaU0k2TVRRc0ltTnZaR2xuYjE5elpYUnZjaUk2TVRCOS5Ydk1UMVVVUlF6TElUZ3NLTlZMempHRUV6WktqWEUwQ3YyY1lXVzZKMDJvIg%3D%3D--0d8dbb4aaf708f6eab5761280a35ecf3787a5bfc"
+      },
+      "session_fingerprint": "5097cd3eb9b8:IUz1QS3paQ==",
+      "header_context": {
+        "municipio": "N/A",
+        "unidade": "N/A",
+        "setor": "N/A"
+      }
+    },
+    "form": {
+      "ts": "2026-05-15T11:46:54.525616+00:00",
+      "page_url": "https://guaraciama-mg.vivver.com/seg/operador/conexao",
+      "form_action": "/seg/operador/1659/create_conexao",
+      "form_method": "post",
+      "data_remote": "true",
+      "csrf_meta": "VhKBVBrs9HCTpV1eJlZr3lZh0GqgbQJFNvti8X/Pr2skQnHOEZtH0jzJAfUza3d8EdQjKpOXm7jOG3e9o9bxzg==",
+      "authenticity_token_in_form": null,
+      "hidden_fields": {
+        "utf8": "✓",
+        "page": "",
+        "seg_operador[codoperador]": "1659",
+        "lookup_key[seg_operador[codmunicipio]]": "3128253",
+        "seg_operador[codmunicipio]": "3128253",
+        "lookup_key[seg_operador[codunidade]]": "14",
+        "seg_operador[codunidade]": "14",
+        "lookup_key[seg_operador[codsetor]]": "10",
+        "seg_operador[codsetor]": "10"
+      },
+      "select2_labels": {
+        "s2id_seg_operador_codmunicipio": "GUARACIAMA",
+        "s2id_seg_operador_codunidade": "ALMOXARIFADO DA SAUDE",
+        "s2id_seg_operador_codsetor": "ALMOXARIFADO"
+      }
+    }
+  }
+}
