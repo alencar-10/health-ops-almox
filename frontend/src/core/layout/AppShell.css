@@ -16,6 +16,7 @@
   background: #f8fafc;
   display: flex;
   flex-direction: column;
+  padding: 40px;
 }
 
 .app-shell-loading {
