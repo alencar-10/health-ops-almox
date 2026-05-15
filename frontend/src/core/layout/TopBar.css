@@ -1,3 +1,22 @@
+.top-bar--session-pending .top-bar-session-pending {
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.status-badge.failed {
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+  max-width: 420px;
+}
+
+.status-badge.failed span {
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .top-bar {
   grid-area: header;
   background: white;

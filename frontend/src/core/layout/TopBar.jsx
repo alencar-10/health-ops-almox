@@ -22,6 +22,7 @@ const TopBar = () => {
     switchContext,
     currentOperation,
     switchError,
+    setSwitchError,
     switchSuccess,
     unitCatalog,
     sectorCatalog,
@@ -105,9 +106,39 @@ const TopBar = () => {
     }
   };
 
-  if (!session) return null;
-
   const busy = Boolean(currentOperation) || switching;
+
+  if (!session) {
+    return (
+      <header className="top-bar top-bar--session-pending">
+        <div className="context-group">
+          <span className="top-bar-session-pending">
+            {appMode === 'PRODUCTION'
+              ? 'Contexto Vivver não carregado — verifique backend e sessão ERP.'
+              : 'Carregando contexto da sessão...'}
+          </span>
+        </div>
+        <div className="status-indicators">
+          {switchError && (
+            <div className="status-badge failed" title={switchError}>
+              ⚠️ <span>{switchError}</span>
+            </div>
+          )}
+          <div
+            className={`status-badge ${(appMode || 'LAB').toLowerCase()} clickable`}
+            onClick={toggleMode}
+          >
+            <ShieldCheck size={14} />
+            <span>
+              {appMode === 'PRODUCTION'
+                ? 'VIVVER PRODUCTION MODE (REAL)'
+                : 'HEALTH-OPS LAB MODE (SIMULATION)'}
+            </span>
+          </div>
+        </div>
+      </header>
+    );
+  }
 
   const displayUnitName = isWeakLabel(session.unit?.name)
     ? unitCatalog.find((u) => String(u.key) === String(session.unit?.id))?.name ||

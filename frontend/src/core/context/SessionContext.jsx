@@ -12,6 +12,14 @@ const SessionContext = createContext();
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 const SWITCH_TIMEOUT_MS = 130_000;
 
+/** LAB | PRODUCTION — normaliza .env (espaços, casing) */
+const resolveInitialAppMode = () => {
+  const raw = import.meta.env.VITE_APP_MODE;
+  if (raw == null || String(raw).trim() === '') return 'LAB';
+  const u = String(raw).trim().toUpperCase();
+  return u === 'PRODUCTION' ? 'PRODUCTION' : 'LAB';
+};
+
 const resolveLabel = (items, id, fallback) => {
   if (!id) return fallback;
   const found = items?.find((x) => String(x.key) === String(id));
@@ -19,7 +27,7 @@ const resolveLabel = (items, id, fallback) => {
 };
 
 export const SessionProvider = ({ children }) => {
-  const [appMode, setAppMode] = useState(import.meta.env.VITE_APP_MODE || 'LAB');
+  const [appMode, setAppMode] = useState(resolveInitialAppMode);
   const [session, setSession] = useState(null);
   const [initialLoading, setInitialLoading] = useState(true);
   const [currentOperation, setCurrentOperation] = useState(null);
@@ -48,22 +56,40 @@ export const SessionProvider = ({ children }) => {
 
     try {
       const response = await fetch(`${API_BASE}/almox/v1/session/current`);
-      const result = await response.json();
-      if (result.data) {
-        const last = lastSwitchRef.current;
-        if (
-          last &&
-          Date.now() - last.at < 60_000 &&
-          String(result.data.unit?.id) !== String(last.unitId)
-        ) {
-          return;
-        }
-        setSession((prev) =>
-          mergeSessionLabels(prev, result.data, {
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        const detail = result?.detail;
+        const msg =
+          typeof detail === 'string'
+            ? detail
+            : Array.isArray(detail)
+              ? detail.map((d) => d?.msg || d).join(' ')
+              : result?.message || `HTTP ${response.status}`;
+        setSwitchError(`Sessão Vivver: ${msg}`);
+        return;
+      }
+
+      if (result?.data) {
+        setSwitchError(null);
+        setSession((prev) => {
+          const last = lastSwitchRef.current;
+          // /current pode atrasar vs. snapshot pós-switch; só ignorar se já temos sessão otimista.
+          if (
+            prev &&
+            last &&
+            Date.now() - last.at < 60_000 &&
+            String(result.data.unit?.id) !== String(last.unitId)
+          ) {
+            return prev;
+          }
+          return mergeSessionLabels(prev, result.data, {
             unitCatalog: unitCatalogRef.current,
             sectorCatalog: sectorCatalogRef.current,
-          })
-        );
+          });
+        });
+      } else {
+        setSwitchError('Resposta do backend sem dados de contexto (`data` vazio).');
       }
     } catch (error) {
       console.error('Failed to fetch real session:', error);
@@ -261,6 +287,7 @@ export const SessionProvider = ({ children }) => {
         appMode,
         currentOperation,
         switchError,
+        setSwitchError,
         switchSuccess,
         unitCatalog,
         sectorCatalog,

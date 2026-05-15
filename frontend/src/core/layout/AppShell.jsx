@@ -1,7 +1,10 @@
 import { useSession } from '../context/SessionContext';
+import Sidebar from './Sidebar';
+import TopBar from './TopBar';
+import './AppShell.css';
 
 const AppShell = ({ children, activeView, onViewChange }) => {
-  const { session, loading } = useSession();
+  const { loading } = useSession();
 
   if (loading) {
     return (
