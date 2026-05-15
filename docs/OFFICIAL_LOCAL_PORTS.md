@@ -76,6 +76,7 @@ Se após relogar o problema persistir, seguir evidência em [docs/evidence/conte
 
 - [ ] Só existe **uma** instância canónica na **8000** (evitar dois `uvicorn` em portas diferentes por hábito).  
 - [ ] `curl http://127.0.0.1:8000/docs` → 200  
+- [ ] `curl -s http://127.0.0.1:8000/almox/v1/session/current` → **200** com `data` (se vier **401** com texto sobre Vivver, o problema não é porta: é login Playwright ou `.env`; ver traceback no terminal do **uvicorn** no instante da chamada).  
 - [ ] `frontend/.env` com `VITE_API_URL=http://127.0.0.1:8000` e Vite reiniciado  
 - [ ] Frontend aberto em `http://localhost:5173`
 

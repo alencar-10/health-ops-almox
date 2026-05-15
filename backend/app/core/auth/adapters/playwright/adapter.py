@@ -49,6 +49,12 @@ class PlaywrightAuthAdapter(AuthEngine, ContextDiscoveryEngine):
         self.session = None
         self.discovery = None
         self.switcher = None
+        self._last_login_failure: Optional[str] = None
+
+    @property
+    def last_login_failure(self) -> Optional[str]:
+        """Último erro do fluxo login Playwright/Vivver (para diagnóstico em /session/current)."""
+        return self._last_login_failure
 
     def get_status(self) -> str:
         return self._status
@@ -66,6 +72,7 @@ class PlaywrightAuthAdapter(AuthEngine, ContextDiscoveryEngine):
             logger.info(f"Iniciando login orquestrado: {username}")
 
             try:
+                self._last_login_failure = None
                 playwright = await async_playwright().start()
                 self._browser = await playwright.chromium.launch(
                     headless=True,
@@ -157,7 +164,8 @@ class PlaywrightAuthAdapter(AuthEngine, ContextDiscoveryEngine):
                 return await self.enrich_context_labels(ctx)
 
             except Exception as e:
-                logger.error("Erro no orquestrador de login: %s", e)
+                self._last_login_failure = f"{type(e).__name__}: {e}"
+                logger.exception("Erro no orquestrador de login: %s", e)
                 self._status = "ERROR"
                 return None
 

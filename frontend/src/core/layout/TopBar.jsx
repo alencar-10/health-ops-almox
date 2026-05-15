@@ -28,6 +28,7 @@ const TopBar = () => {
     fetchSectorsForUnit,
     clearSwitchError,
     clearSwitchSuccess,
+    initialLoading,
   } = useSession();
   const [showUnits, setShowUnits] = useState(false);
   const [showSectors, setShowSectors] = useState(false);
@@ -214,9 +215,12 @@ const TopBar = () => {
       <header className="top-bar top-bar--session-pending">
         <div className="context-group">
           <span className="top-bar-session-pending">
-            {appMode === 'PRODUCTION'
-              ? 'Contexto Vivver não carregado — verifique backend e sessão ERP.'
-              : 'Carregando contexto da sessão...'}
+            {appMode === 'PRODUCTION' && initialLoading && !switchError
+              ? 'A obter contexto do ERP… A primeira chamada pode levar até ~60–90s (login Playwright/Vivver).'
+              : switchError ||
+                (appMode === 'PRODUCTION'
+                  ? 'Contexto Vivver não disponível — veja erro acima/ao lado ou `GET /almox/v1/session/current`; típico: credenciais `backend/.env`, relogon ERP ou `playwright install chromium`.'
+                  : 'Carregando contexto da sessão...')}
           </span>
         </div>
         <div className="status-indicators">

@@ -49,7 +49,14 @@ async def get_real_session_context():
             )
         
         if not context:
-            raise HTTPException(status_code=401, detail="Failed to resolve real ERP context.")
+            inner = getattr(engine, "last_login_failure", None)
+            base = (
+                "Falha ao resolver contexto no Vivver (Playwright/login não montou OperationalContext). "
+                "Confira VIVVER_USER/VIVVER_PASS/VIVVER_URL em backend/.env, `playwright install chromium`, "
+                "logs do uvicorn."
+            )
+            detail = f"{base} Detalhe: {inner}" if inner else base
+            raise HTTPException(status_code=401, detail=detail)
             
         return {
             "data": {
@@ -74,7 +81,10 @@ async def get_real_session_context():
             },
             "message": "Real ERP context resolved successfully."
         }
+    except HTTPException:
+        raise
     except Exception as e:
+        logger.exception("session/current failed unexpectedly")
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.get("/available-units", response_model=StandardResponse[list])
