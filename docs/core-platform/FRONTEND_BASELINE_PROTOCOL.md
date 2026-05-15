@@ -5,78 +5,103 @@
 **Motivo:** o frontend deixou de ser “só UI”: integra o **motor operacional** (contexto Unidade/Setor soberano no ERP).
 
 **Leitura obrigatória associada:** ordem em [context-switch README](../evidence/context-switch/README.md), [COMMIT_PROTOCOL_v1](../evidence/context-switch/COMMIT_PROTOCOL_v1.md), [CONTEXT_COHERENCE_RULES](./CONTEXT_COHERENCE_RULES.md), [VALIDATED_SCENARIOS](../evidence/context-switch/VALIDATED_SCENARIOS.md).  
-**Boot técnico:** [RELEASE_HANDOFF](../evidence/context-switch/RELEASE_HANDOFF.md).
+**Boot técnico:** [RELEASE_HANDOFF](../evidence/context-switch/RELEASE_HANDOFF.md).  
+**Guia para nova sessão de IA:** [AI_SESSION_START_HERE.md](../AI_SESSION_START_HERE.md).
+
+---
+
+## Legenda de status
+
+| Status | Significado |
+|--------|-------------|
+| **PASS** | Critério cumprido; evidência indicada (comando, screenshot ou log). |
+| **FAIL** | Critério não cumprido; observações obrigatórias (reprodução, stack, env). |
+| **PEND** | Ainda não executado nesta execução registada — **não** equivale a PASS. |
+| **N/A** | Critério não aplicável ao ambiente atual (declarar porquê nas observações). |
+
+**Screenshots:** guardar em `docs/evidence/baseline-runs/<AAAA-MM-DD>/` e citar caminho na coluna **Evidência**.
+
+---
+
+## Execução registada (evidência operacional)
+
+| Campo | Valor |
+|-------|--------|
+| **Branch / commit** | `release/context-commit-stable` @ `afc630b` |
+| **Data** | 2026-05-15 |
+| **Executor** | Cursor Agent (assistido) + _(completar nome humano se aplicável)_ |
+| **SO / Node** | Win32 _(completar versão Node com `node -v`)_ |
+
+> **Instrução:** em cada novo ciclo de validação, duplicar a tabela acima ou acrescentar uma linha na §8 com nova data/commit, para manter histórico.
 
 ---
 
 ## 1. Checklist obrigatório (validação manual antes de merge em `release`)
 
-Marcar **PASS** / **FAIL** / **N/A** na coluna do release. Não fazer merge da hotfix de shell se qualquer item PASS dependente de Vivver falhar sem justificativa registrada (incidente / env).
+Marcar **PASS** / **FAIL** / **PEND** / **N/A**. Não fazer merge da hotfix de shell se qualquer item **crítico** (3–9 em ambiente Vivver real) estiver **FAIL** sem incidente documentado.
 
-| # | Critério | PASS = |
-|---|----------|--------|
-| 1 | **Frontend sobe em clone limpo** | `git clone` → `checkout` da branch candidata → `cd frontend` → `npm ci` (ou `npm install`) → `npm run dev`; Vite imprime URL; sem erro fatal no terminal. Opcional: `npm run build` com exit 0. |
-| 2 | **TopBar hidrata corretamente** | Com `VITE_APP_MODE=LAB`: Prefeitura, Unidade e Setor aparecem com labels coerentes (mock). Com `PRODUCTION` e backend OK: mesmo bloco preenchido a partir de `/almox/v1/session/current`. |
-| 3 | **`PRODUCTION` funciona** | Backend em `VITE_API_URL`; `GET /almox/v1/session/current` 200 com `data`; TopBar não permanece indefinidamente no estado degradado; badges de modo/erro coerentes. |
-| 4 | **PSF `2/0` funciona** | `unit_id=2`, `sector_id=0` (ATENDIMENTO). `POST .../switch` → `COMPLETED`; `GET /current` com `unit.id=2`, `sector.id=0`. Ver referência em [VALIDATED_SCENARIOS](../evidence/context-switch/VALIDATED_SCENARIOS.md). |
-| 5 | **Almox `14/10` funciona** | `unit_id=14`, `sector_id=10`. Switch `COMPLETED`; `/current` corresponde. |
-| 6 | **Roundtrip funciona** | Sequência mínima: `2/0` → `14/10` → `2/0` novamente; todos os passos `COMPLETED` (tempos variam cold/warm). |
-| 7 | **Overlay não trava** | Durante `switch`, indicador de operação em curso; ao `COMPLETED` ou falha terminal, overlay/estado deixa de bloquear cliques de forma órfã; sem spinner infinito. |
-| 8 | **Refresh não perde contexto** | Após troca válida, reload da página SPA: `PRODUCTION` deve re-hidratar via `/current` para a mesma combinação esperada (ERP como fonte da verdade — se divergir, documentar sob `STALE_CONTEXT`). |
-| 9 | **Stale `/current` não limpa sessão** | Se já existe sessão otimista (`prev`) e `/current` diverge dentro da janela pós-switch documentada no código, UI **não** deve regredir para “sem contexto” apenas por snapshot atrasado — manter `prev` até convergir ou falha explícita. |
+| # | Critério | Status | Observações | Tempo (s ou mm:ss) | Evidência |
+|---|----------|--------|-------------|-------------------|-----------|
+| 1 | **Frontend sobe em clone limpo** — `git clone` → checkout branch → `cd frontend` → `npm ci` → `npm run dev`; Vite URL; opc. `npm run build` exit 0 | **PEND** | Nesta sessão **não** se repetiu `git clone` nem `npm ci` em diretório limpo. Subconjunto: `npm run build` em workspace existente — ver §2. | — | _(screenshot terminal clone+ci quando executar)_ |
+| 2 | **TopBar hidrata corretamente** — LAB: labels mock; PRODUCTION + backend: `/almox/v1/session/current` | **PEND** | Validar nos dois modos com utilizador humano. | — | _(TopBar LAB + PRODUCTION)_ |
+| 3 | **PRODUCTION funciona** — API em `VITE_API_URL`; GET `/current` 200; badges coerentes | **PEND** | Confirmar `VIVVER_OPERATOR_ID` no backend se dropdown de unidades vier vazio com contexto visível. | — | _(DevTools Network + TopBar)_ |
+| 4 | **PSF `2/0`** — switch COMPLETED; `/current` `unit.id=2`, `sector.id=0` | **PEND** | Ver [VALIDATED_SCENARIOS](../evidence/context-switch/VALIDATED_SCENARIOS.md). | — | _(curl ou HAR)_ |
+| 5 | **Almox `14/10`** — idem | **PEND** | — | — | |
+| 6 | **Roundtrip** — `2/0` → `14/10` → `2/0` | **PEND** | — | — | _(timeline anotada)_ |
+| 7 | **Overlay não trava** — sem spinner órfão após COMPLETED/FAIL | **PEND** | — | — | |
+| 8 | **Refresh não perde contexto** — reload SPA alinha com ERP | **PEND** | Se divergir, etiquetar STALE e documentar. | — | |
+| 9 | **Stale `/current` não limpa sessão** — guardas `prev` no cliente | **PEND** | Revisar comportamento em código + teste manual. | — | |
 
 ---
 
 ## 2. Smoke tests (rápidos)
 
-| Teste | Comando / ação | Esperado |
-|--------|----------------|----------|
-| Build produção | `cd frontend && npm run build` | Exit 0, artefactos em `dist/`. |
-| Lint (se política do repo exigir) | `npm run lint` | Política atual: corrigir apenas se bloquear CI. |
-| Porta dev | `npm run dev` | URL local anunciada; sem crash. Se 5173 ocupada, Vite escolhe porta seguinte — usar a URL impressa. |
+| Teste | Status | Observações | Tempo | Evidência |
+|-------|--------|-------------|-------|-----------|
+| Build produção — `cd frontend && npm run build` | **PASS** | Vite build exit 0; módulos transformados 1746; artefactos em `dist/`. | **~2.10** (reportado pelo Vite) + ~7.3 s wall | comando executado nesta sessão |
+| Lint — `npm run lint` | **FAIL** | ESLint exit **1**: `no-unused-vars` (ex.: `React` em vários ficheiros); `react-hooks/refs` em `SessionContext.jsx` (atribuição a `.current` durante render); `react-hooks/set-state-in-effect` em `SessionContext.jsx` / `TopBar.jsx`; `react-refresh/only-export-components`; outros em `Sidebar.jsx`, etc. **~33.8 s** wall. | **~34** | terminal / reexecutar `npm run lint` e anexar log em `baseline-runs/` |
+| Porta dev — `npm run dev` | **PEND** | — | — | |
 
 ---
 
 ## 3. Hydration tests (PRODUCTION)
 
-| # | Passo | Esperado |
-|---|--------|----------|
-| H1 | Backend off, `PRODUCTION` | Mensagem de erro de ligação ou badge de falha; recuperação após subir backend (`refreshSession` / reload). |
-| H2 | Backend on, credenciais válidas | `session` populada; TopBar com três contextos + utilizador. |
-| H3 | Resposta HTTP de erro (401/500) | Mensagem derivada de `detail` / status, sem trancar a app inteira de forma opaca. |
+| # | Passo | Status | Observações | Tempo | Evidência |
+|---|--------|--------|---------------|-------|-----------|
+| H1 | Backend off, `PRODUCTION` | **PEND** | Esperado: erro legível ou badge; recuperação após backend up. | — | |
+| H2 | Backend on, credenciais válidas | **PEND** | Session populada; TopBar completa. | — | |
+| H3 | HTTP 401/500 | **PEND** | Mensagem derivada de `detail`; app não bloqueada de forma opaca. | — | |
 
 ---
 
 ## 4. Context switch tests (UI + API)
 
-Executar em paralelo observação da API (curl ou DevTools) e do TopBar/dropdowns.
+| Cenário | Parâmetros | Status | Observações | Tempo | Evidência |
+|---------|------------|--------|-------------|-------|-----------|
+| PSF + ATENDIMENTO | `unit_id=2`, `sector_id=0` | **PEND** | API COMPLETED + UI | — | |
+| Almox | `14` / `10` | **PEND** | — | — | |
+| Múltiplos setores | — | **PEND** | MULTIPLE_CHOICES / menu SETOR | — | |
 
-| Cenário | Parâmetros | Verificação API | Verificação UI |
-|---------|------------|-----------------|----------------|
-| PSF + ATENDIMENTO | `unit_id=2`, `sector_id=0` | `COMPLETED`; `/current` consistente | Dropdowns e labels após conclusão |
-| Almox | `14` / `10` | idem | idem |
-| Múltiplos setores | Unidade com >1 setor | `MULTIPLE_CHOICES_REQUIRED` se aplicável | Menu SETOR permite escolha; sem `setSwitchError` indefinido |
-
-Referência de comandos: [VALIDATED_SCENARIOS](../evidence/context-switch/VALIDATED_SCENARIOS.md).
+Referência: [VALIDATED_SCENARIOS](../evidence/context-switch/VALIDATED_SCENARIOS.md).
 
 ---
 
 ## 5. Stale tests
 
-| # | Situação | Esperado |
-|---|----------|----------|
-| S1 | Imediatamente após `switch` bem-sucedido, `/current` ainda devolve unidade antiga | Sessão já preenchida (**`prev`**) não é apagada até convergência ou nova política explicitada em ADR. |
-| S2 | Re-fetch periódico (se implementado no futuro) | Nunca sobrescrever combinação validada pelo ERP sem revalidação; ver [CONTEXT_COHERENCE_RULES](./CONTEXT_COHERENCE_RULES.md). |
+| # | Situação | Status | Observações | Evidência |
+|---|----------|--------|-------------|-----------|
+| S1 | Após switch OK, `/current` ainda antigo | **PEND** | Manter `prev` até convergir | |
+| S2 | Re-fetch futuro | **N/A** | _(quando existir política)_ | |
 
 ---
 
 ## 6. Recovery tests
 
-| # | Situação | Esperado |
-|---|----------|----------|
-| R1 | Queda intermitente de rede durante `switch` | Erro utilizador legível; `cancel`/limpeza operação se existir; retentativa possível sem reload obrigatório. |
-| R2 | Timeout longo (~2 min) | Mensagem de timeout documentada na UI (alinhamento com `SWITCH_TIMEOUT_MS`). |
-| R3 | Alternância LAB ↔ PRODUCTION (badge TopBar) | Sem crash; modo LAB funciona offline relativo ao ERP; modo PRODUCTION volta a hidratar. |
+| # | Situação | Status | Observações | Evidência |
+|---|----------|--------|-------------|-----------|
+| R1 | Rede instável durante switch | **PEND** | Erro legível; retentativa | |
+| R2 | Timeout longo (~2 min) | **PEND** | Alinhar `SWITCH_TIMEOUT_MS` | |
+| R3 | LAB ↔ PRODUCTION | **PEND** | Sem crash | |
 
 ---
 
@@ -84,10 +109,8 @@ Referência de comandos: [VALIDATED_SCENARIOS](../evidence/context-switch/VALIDA
 
 Depois do merge na `release/context-commit-stable` (ou equivalente governado):
 
-- Sugestão de tag: **`frontend-shell-stable-v1`** (marca explícito o pacto shell + TopBar + hidratação).  
-  Alternativa coordenada com outras linhas da plataforma: **`platform-baseline-v2`** (se já existirem convenções de numeração inter-equipas).
-
-Criar tag só em **HEAD** já integrado e **após** o checklist §1 estar verde (ou registrado incidente).
+- Sugestão de tag: **`frontend-shell-stable-v1`**.  
+- Criar tag só em **HEAD** já integrado e **após** o checklist §1 estar verde (ou incidente registado).
 
 ```bash
 git tag -a frontend-shell-stable-v1 -m "Frontend shell + TopBar baseline (operational motor)"
@@ -96,8 +119,8 @@ git push origin frontend-shell-stable-v1
 
 ---
 
-## 8. Registo
+## 8. Registo histórico
 
-| Data | Release / tag | Executor | §1 resultado (sumário) |
-|------|----------------|----------|-------------------------|
-| _(preencher)_ | _(preencher)_ | _(preencher)_ | _(preencher)_ |
+| Data | Release / tag | Executor | §1 sumário (PASS/FAIL/PEND) | Notas |
+|------|----------------|----------|-----------------------------|-------|
+| 2026-05-15 | `release/context-commit-stable` @ `afc630b` | Cursor Agent | **PEND** (validação Vivver manual não executada nesta sessão) | §2: build PASS; lint FAIL. Ver guia [AI_SESSION_START_HERE.md](../AI_SESSION_START_HERE.md). |

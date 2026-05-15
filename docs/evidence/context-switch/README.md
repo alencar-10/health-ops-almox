@@ -9,7 +9,9 @@ Este diretório preserva a **causalidade técnica** da estabilização da persis
 
 ## Leitura obrigatória antes de alterar código
 
-**Aplica-se a humanos e a agentes automatizados (IA).**  
+**Entrada genérica para qualquer IA:** [AI_SESSION_START_HERE.md](../../AI_SESSION_START_HERE.md) (orientação + ligação aos docs abaixo).
+
+**Aplica-se a humanos e a agentes automatizados (IA).**
 
 Não altere frontend, backend de sessão/contexto Vivver nem rotas `/almox/v1/session/*` com base apenas em buscas pontuais no repositório. Projetos neste nível já têm invariantes documentados; ignorar esse núcleo gera regressões graves (fluxo ERP, POST duplo, `sector_id`, CSRF).
 

@@ -22,6 +22,11 @@ from app.core.auth.adapters.playwright.trace.commit_trace import (
 logger = logging.getLogger(__name__)
 
 
+def _vivver_operator_scope_id() -> Optional[str]:
+    raw = (getattr(settings, "VIVVER_OPERATOR_ID", None) or "").strip()
+    return raw or None
+
+
 def _is_missing_label(name: Optional[str]) -> bool:
     return not name or name.strip() in ("N/A", "unknown", "—")
 
@@ -114,8 +119,10 @@ class PlaywrightAuthAdapter(AuthEngine, ContextDiscoveryEngine):
 
                 res_unit_id = "unknown"
                 if not _is_missing_label(unit_name):
+                    oid = _vivver_operator_scope_id()
                     available_units = await self.discovery.list_units(
-                        municipality_id=settings.VITE_MUNICIPALITY_ID
+                        municipality_id=settings.VITE_MUNICIPALITY_ID,
+                        operator_id=oid,
                     )
                     for u in available_units:
                         if u["name"].upper() == unit_name.upper():
@@ -141,7 +148,7 @@ class PlaywrightAuthAdapter(AuthEngine, ContextDiscoveryEngine):
                     unit_name=unit_name,
                     sector_id="0",
                     sector_name=sector_name,
-                    operator_id=username,
+                    operator_id=_vivver_operator_scope_id() or username,
                     operator_name=username,
                     session=session_ctx,
                 )
@@ -183,9 +190,11 @@ class PlaywrightAuthAdapter(AuthEngine, ContextDiscoveryEngine):
         """Traduz IDs → nomes via Discovery quando o cabeçalho Vivver não expõe labels."""
         if not self.discovery:
             return ctx
+        oid = _vivver_operator_scope_id()
         if _is_missing_label(ctx.unit_name) and ctx.unit_id not in ("unknown", "", "0"):
             for u in await self.discovery.list_units(
-                municipality_id=settings.VITE_MUNICIPALITY_ID
+                municipality_id=settings.VITE_MUNICIPALITY_ID,
+                operator_id=oid,
             ):
                 if str(u["key"]) == str(ctx.unit_id):
                     ctx.unit_name = u["name"]
@@ -194,6 +203,7 @@ class PlaywrightAuthAdapter(AuthEngine, ContextDiscoveryEngine):
             for s in await self.discovery.list_sectors(
                 unit_id=str(ctx.unit_id),
                 municipality_id=settings.VITE_MUNICIPALITY_ID,
+                operator_id=oid,
             ):
                 if str(s["key"]) == str(ctx.sector_id):
                     ctx.sector_name = s["name"]
@@ -224,8 +234,10 @@ class PlaywrightAuthAdapter(AuthEngine, ContextDiscoveryEngine):
         """Stage 3: Access Scope Discovery (Units)"""
         if not await self._ensure_authenticated():
             return []
+        oid = _vivver_operator_scope_id()
         return await self.discovery.list_units(
-            municipality_id=settings.VITE_MUNICIPALITY_ID
+            municipality_id=settings.VITE_MUNICIPALITY_ID,
+            operator_id=oid,
         )
 
     async def list_available_sectors(self, unit_id: str) -> List[Dict]:
@@ -235,6 +247,7 @@ class PlaywrightAuthAdapter(AuthEngine, ContextDiscoveryEngine):
         return await self.discovery.list_sectors(
             unit_id=unit_id,
             municipality_id=settings.VITE_MUNICIPALITY_ID,
+            operator_id=_vivver_operator_scope_id(),
         )
 
     async def switch_context(self, unit_id: str, sector_id: Optional[str] = None, operation_id: Optional[str] = None) -> Optional[OperationalContext]:

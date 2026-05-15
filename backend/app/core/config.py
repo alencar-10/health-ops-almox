@@ -10,6 +10,8 @@ class Settings(BaseSettings):
     VITE_MUNICIPALITY_ID: str = "3128253"
     VIVVER_USER: str = ""
     VIVVER_PASS: str = ""
+    # ID Vivver (codoperador) para lookups Seg::Operador::ConexaoQuery — obrigatório para listagens
+    VIVVER_OPERATOR_ID: str = ""
     VIVVER_AUTH_TOKEN: str = ""
     VIVVER_SESSION_ID: str = ""
     

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   MapPin,
   Hospital,
@@ -37,32 +37,136 @@ const TopBar = () => {
   const [availableSectors, setAvailableSectors] = useState([]);
   const [sectorsUnitId, setSectorsUnitId] = useState(null);
   const [switching, setSwitching] = useState(false);
+  const topBarRef = useRef(null);
+  /** Unidades no painel ≠ “lista vazio” ⇒ loading infinito */
+  const [unitsBusy, setUnitsBusy] = useState(false);
+  const [unitsFetchErr, setUnitsFetchErr] = useState('');
+  const [sectorsBusy, setSectorsBusy] = useState(false);
+  const [sectorsFetchErr, setSectorsFetchErr] = useState('');
+
+  const busy = Boolean(currentOperation) || switching;
 
   useEffect(() => {
-    if (unitCatalog.length > 0) setAvailableUnits(unitCatalog);
-  }, [unitCatalog]);
+    if (!showUnits && !showSectors && !showTenants) return;
+    const onPointerDown = (e) => {
+      if (topBarRef.current && !topBarRef.current.contains(e.target)) {
+        setShowUnits(false);
+        setShowSectors(false);
+        setShowTenants(false);
+      }
+    };
+    document.addEventListener('pointerdown', onPointerDown, true);
+    return () => document.removeEventListener('pointerdown', onPointerDown, true);
+  }, [showUnits, showSectors, showTenants]);
 
+  /** Catálogo chegou pelo SessionProvider — atualiza lista se dropdown aberto. */
   useEffect(() => {
-    if (showUnits && appMode === 'PRODUCTION' && availableUnits.length === 0) {
-      fetch(`${API_BASE}/almox/v1/session/available-units`)
-        .then((res) => res.json())
-        .then((result) => {
-          if (result.data) setAvailableUnits(result.data);
-        })
-        .catch((err) => console.error('Error fetching units:', err));
+    if (!showUnits || appMode !== 'PRODUCTION') return;
+    if (unitCatalog.length > 0) {
+      setAvailableUnits(unitCatalog);
+      setUnitsBusy(false);
+      setUnitsFetchErr('');
     }
-  }, [showUnits, appMode, availableUnits.length]);
+  }, [showUnits, appMode, unitCatalog]);
 
+  /** Busca explícita ao abrir, se contexto ainda não tem lista (ou catálogo vazio legítimo após erro). */
   useEffect(() => {
-    if (sectorCatalog.length > 0) setAvailableSectors(sectorCatalog);
-  }, [sectorCatalog]);
+    if (!showUnits || appMode !== 'PRODUCTION') return;
 
-  useEffect(() => {
-    if (showSectors && appMode === 'PRODUCTION' && session?.unit?.id) {
-      const unitId = sectorsUnitId || session.unit.id;
-      fetchSectorsForUnit(unitId).then(setAvailableSectors);
+    if (unitCatalog.length > 0) {
+      return;
     }
-  }, [showSectors, appMode, session?.unit?.id, sectorsUnitId, fetchSectorsForUnit]);
+
+    let cancelled = false;
+    const ac = new AbortController();
+    const tm = window.setTimeout(() => ac.abort(), 120_000);
+
+    setUnitsBusy(true);
+    setUnitsFetchErr('');
+
+    fetch(`${API_BASE}/almox/v1/session/available-units`, { signal: ac.signal })
+      .then(async (res) => {
+        window.clearTimeout(tm);
+        if (cancelled) return;
+        const body = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          const d = body?.detail;
+          const msg =
+            typeof d === 'string'
+              ? d
+              : Array.isArray(d)
+                ? d.map((x) => x?.msg || x).join(' ')
+                : JSON.stringify(body);
+          throw new Error(msg || `HTTP ${res.status}`);
+        }
+        const list = Array.isArray(body?.data) ? body.data : [];
+        setAvailableUnits(list);
+      })
+      .catch((err) => {
+        window.clearTimeout(tm);
+        if (cancelled) return;
+        const aborted = ac.signal.aborted || err?.name === 'AbortError';
+        if (aborted) {
+          setUnitsFetchErr(
+            'Tempo limite (>2 min) ao carregar unidades. Backend/Vivver em carga ou indisponível.'
+          );
+          return;
+        }
+        setUnitsFetchErr(err?.message || 'Falha ao carregar unidades.');
+        setAvailableUnits([]);
+      })
+      .finally(() => {
+        window.clearTimeout(tm);
+        if (!cancelled) setUnitsBusy(false);
+      });
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(tm);
+      ac.abort();
+    };
+  }, [showUnits, appMode, unitCatalog]);
+
+  useEffect(() => {
+    if (!showSectors || appMode !== 'PRODUCTION' || busy) return;
+
+    const unitId = sectorsUnitId || session?.unit?.id;
+    if (!unitId) {
+      setSectorsFetchErr('Selecione uma unidade antes do setor.');
+      setAvailableSectors([]);
+      return;
+    }
+
+    if (sectorCatalog.length > 0) {
+      setAvailableSectors(sectorCatalog);
+      setSectorsBusy(false);
+      setSectorsFetchErr('');
+      return;
+    }
+
+    let dead = false;
+    setSectorsBusy(true);
+    setSectorsFetchErr('');
+
+    fetchSectorsForUnit(unitId)
+      .then((list) => {
+        if (dead) return;
+        const arr = Array.isArray(list) ? list : [];
+        setAvailableSectors(arr);
+      })
+      .catch((e) => {
+        if (dead) return;
+        setSectorsFetchErr(e?.message || String(e));
+        setAvailableSectors([]);
+      })
+      .finally(() => {
+        if (!dead) setSectorsBusy(false);
+      });
+
+    return () => {
+      dead = true;
+    };
+  }, [showSectors, appMode, busy, sectorsUnitId, session?.unit?.id, sectorCatalog, fetchSectorsForUnit]);
 
   const toggleMode = () => setAppMode((prev) => (prev === 'LAB' ? 'PRODUCTION' : 'LAB'));
 
@@ -105,8 +209,6 @@ const TopBar = () => {
       setSwitching(false);
     }
   };
-
-  const busy = Boolean(currentOperation) || switching;
 
   if (!session) {
     return (
@@ -151,9 +253,16 @@ const TopBar = () => {
     : session.sector?.name;
 
   return (
-    <header className="top-bar">
+    <header className="top-bar" ref={topBarRef}>
       <div className="context-group">
-        <div className="context-item clickable" onClick={() => setShowTenants(!showTenants)}>
+        <div
+          className="context-item clickable"
+          onClick={() => {
+            setShowUnits(false);
+            setShowSectors(false);
+            setShowTenants((v) => !v);
+          }}
+        >
           <span className="context-label">PREFEITURA</span>
           <div className="context-value">
             <MapPin size={14} className="icon-blue" />
@@ -166,7 +275,12 @@ const TopBar = () => {
 
         <div
           className={`context-item ${busy ? 'disabled' : 'clickable'}`}
-          onClick={() => !busy && setShowUnits(!showUnits)}
+          onClick={() => {
+            if (busy) return;
+            setShowTenants(false);
+            setShowSectors(false);
+            setShowUnits((v) => !v);
+          }}
         >
           <span className="context-label">UNIDADE DE SAÚDE</span>
           <div className="context-value">
@@ -177,11 +291,22 @@ const TopBar = () => {
           {showUnits && !busy && (
             <div className="units-dropdown">
               <div className="dropdown-header">Selecionar Unidade (Real)</div>
-              {availableUnits.length > 0 ? (
+              {unitsBusy && availableUnits.length === 0 ? (
+                <div className="dropdown-loading">
+                  Carregando unidades… A primeira chamada pode levar 30–90s (Vivver/Playwright).
+                </div>
+              ) : unitsFetchErr ? (
+                <div className="dropdown-msg dropdown-msg--error">{unitsFetchErr}</div>
+              ) : availableUnits.length === 0 ? (
+                <div className="dropdown-msg">
+                  Nenhuma unidade disponível para este operador nesta sessão. Verifique permissões no Vivver
+                  ou as credenciais do backend.
+                </div>
+              ) : (
                 availableUnits.map((u) => (
                   <div
                     key={u.key}
-                    className={`dropdown-item ${String(session.unit.id) === String(u.key) ? 'active' : ''}`}
+                    className={`dropdown-item ${String(session?.unit?.id) === String(u.key) ? 'active' : ''}`}
                     onClick={(e) => {
                       e.stopPropagation();
                       handleUnitSwitch(u);
@@ -190,8 +315,6 @@ const TopBar = () => {
                     {u.name}
                   </div>
                 ))
-              ) : (
-                <div className="dropdown-loading">Carregando unidades (1ª vez ~30s)...</div>
               )}
             </div>
           )}
@@ -201,7 +324,12 @@ const TopBar = () => {
 
         <div
           className={`context-item ${busy ? 'disabled' : 'clickable'}`}
-          onClick={() => !busy && setShowSectors(!showSectors)}
+          onClick={() => {
+            if (busy) return;
+            setShowTenants(false);
+            setShowUnits(false);
+            setShowSectors((v) => !v);
+          }}
         >
           <span className="context-label">SETOR</span>
           <div className="context-value">
@@ -212,11 +340,17 @@ const TopBar = () => {
           {showSectors && !busy && (
             <div className="units-dropdown">
               <div className="dropdown-header">Selecionar Setor</div>
-              {availableSectors.length > 0 ? (
+              {sectorsBusy && availableSectors.length === 0 ? (
+                <div className="dropdown-loading">Carregando setores…</div>
+              ) : sectorsFetchErr ? (
+                <div className="dropdown-msg dropdown-msg--error">{sectorsFetchErr}</div>
+              ) : availableSectors.length === 0 ? (
+                <div className="dropdown-msg">Nenhum setor retornado para esta unidade.</div>
+              ) : (
                 availableSectors.map((s) => (
                   <div
                     key={s.key}
-                    className={`dropdown-item ${String(session.sector.id) === String(s.key) ? 'active' : ''}`}
+                    className={`dropdown-item ${String(session?.sector?.id) === String(s.key) ? 'active' : ''}`}
                     onClick={(e) => {
                       e.stopPropagation();
                       handleSectorSwitch(s);
@@ -225,8 +359,6 @@ const TopBar = () => {
                     {s.name}
                   </div>
                 ))
-              ) : (
-                <div className="dropdown-loading">Carregando setores...</div>
               )}
             </div>
           )}

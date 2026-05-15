@@ -103,17 +103,32 @@ export const SessionProvider = ({ children }) => {
     if (appMode !== 'PRODUCTION') return;
     try {
       const res = await fetch(`${API_BASE}/almox/v1/session/available-units`);
-      const data = await res.json();
-      if (data.data) setUnitCatalog(data.data);
+      const payload = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        console.warn('available-units HTTP', res.status, payload?.detail ?? payload);
+        setUnitCatalog([]);
+        return;
+      }
+      const list = Array.isArray(payload?.data) ? payload.data : [];
+      setUnitCatalog(list);
     } catch (e) {
       console.error('Failed to load units', e);
+      setUnitCatalog([]);
     }
   }, [appMode]);
 
+  /** Sessão Vivver primeiro, depois catálogo — evita duas corrida ao Playwright em paralelo. */
   useEffect(() => {
-    setInitialLoading(true);
-    fetchSession();
-    fetchUnitCatalog();
+    let cancelled = false;
+    (async () => {
+      setInitialLoading(true);
+      await fetchSession();
+      if (cancelled) return;
+      await fetchUnitCatalog();
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, [appMode, fetchSession, fetchUnitCatalog]);
 
   // Enriquece labels quando o catálogo chega (sem re-fetch /current em loop)
