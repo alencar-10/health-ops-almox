@@ -1,0 +1,129 @@
+{
+  "keyword_hits": [
+    {
+      "selector_hint": "div.abs.window_button_bar",
+      "text": "Senha Acessoinfo Unidade Mensagem Sair",
+      "tag": "DIV",
+      "id": null,
+      "classes": "abs window_button_bar"
+    },
+    {
+      "selector_hint": "div.btn-group",
+      "text": "Senha Acessoinfo Unidade Mensagem Sair",
+      "tag": "DIV",
+      "id": null,
+      "classes": "btn-group"
+    },
+    {
+      "selector_hint": "a.btn.btn-default",
+      "text": "Unidade",
+      "tag": "A",
+      "id": null,
+      "classes": "btn btn-default"
+    },
+    {
+      "selector_hint": "#amx",
+      "text": "Almoxarifado",
+      "tag": "LI",
+      "id": "amx",
+      "classes": "jstree-node  jstree-closed"
+    },
+    {
+      "selector_hint": "#amx_anchor",
+      "text": "Almoxarifado",
+      "tag": "A",
+      "id": "amx_anchor",
+      "classes": "jstree-anchor"
+    },
+    {
+      "selector_hint": "#esf",
+      "text": "Estratégia Saúde da Família",
+      "tag": "LI",
+      "id": "esf",
+      "classes": "jstree-node  jstree-closed"
+    },
+    {
+      "selector_hint": "#esf_anchor",
+      "text": "Estratégia Saúde da Família",
+      "tag": "A",
+      "id": "esf_anchor",
+      "classes": "jstree-anchor"
+    },
+    {
+      "selector_hint": "#bar_bottom",
+      "text": "14 - ALMOXARIFADO DA SAUDE 10 - ALMOXARIFADO 11:4215/05/2026",
+      "tag": "DIV",
+      "id": "bar_bottom",
+      "classes": "abs"
+    },
+    {
+      "selector_hint": "div.abs.bottom_inner",
+      "text": "14 - ALMOXARIFADO DA SAUDE 10 - ALMOXARIFADO 11:4215/05/2026",
+      "tag": "DIV",
+      "id": null,
+      "classes": "abs bottom_inner"
+    },
+    {
+      "selector_hint": "div.bottom_right",
+      "text": "14 - ALMOXARIFADO DA SAUDE 10 - ALMOXARIFADO 11:4215/05/2026",
+      "tag": "DIV",
+      "id": null,
+      "classes": "bottom_right"
+    },
+    {
+      "selector_hint": "li",
+      "text": "14 - ALMOXARIFADO DA SAUDE 10 - ALMOXARIFADO",
+      "tag": "LI",
+      "id": null,
+      "classes": null
+    },
+    {
+      "selector_hint": "#show_unidade",
+      "text": "14 - ALMOXARIFADO DA SAUDE 10 - ALMOXARIFADO",
+      "tag": "A",
+      "id": "show_unidade",
+      "classes": null
+    },
+    {
+      "selector_hint": "#unidade_info",
+      "text": "14 - ALMOXARIFADO DA SAUDE",
+      "tag": "DIV",
+      "id": "unidade_info",
+      "classes": null
+    },
+    {
+      "selector_hint": "#setor_info",
+      "text": "10 - ALMOXARIFADO",
+      "tag": "DIV",
+      "id": "setor_info",
+      "classes": null
+    }
+  ],
+  "id_class_hits": [
+    {
+      "id": "shortcut_lab_unidade_medida_exame",
+      "classes": "abs shortcut",
+      "text": "Unidade de Medida do Exame"
+    },
+    {
+      "id": "shortcut_lab_unidade_exame_proces",
+      "classes": "abs shortcut",
+      "text": "Caracterização dos Exames do Laboratório"
+    },
+    {
+      "id": "show_unidade",
+      "classes": "",
+      "text": "14 - ALMOXARIFADO DA SAUDE 10 - ALMOXARIFADO"
+    },
+    {
+      "id": "unidade_info",
+      "classes": "",
+      "text": "14 - ALMOXARIFADO DA SAUDE"
+    },
+    {
+      "id": "setor_info",
+      "classes": "",
+      "text": "10 - ALMOXARIFADO"
+    }
+  ]
+}

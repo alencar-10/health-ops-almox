@@ -7,15 +7,19 @@
     "sidebar main";
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  /* overflow:hidden cortava dropdowns absolutos no TopBar */
+  overflow: visible;
 }
 
 .main-content {
   grid-area: main;
   overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 0;
   background: #f8fafc;
   display: flex;
   flex-direction: column;
+  padding: 40px;
 }
 
 .app-shell-loading {

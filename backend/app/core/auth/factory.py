@@ -4,23 +4,25 @@ from app.core.auth.engine import AuthEngine
 class AuthEngineFactory:
     """
     Fábrica responsável por instanciar o motor de autenticação correto.
-    IMPLEMENTAÇÃO COM HARDENING: Imports dinâmicos para evitar contaminação de dependências.
+    IMPLEMENTAÇÃO COM POOL: Garante isolamento por sessão/operador.
     """
+    _instances = {}
 
-    @staticmethod
-    def get_engine() -> AuthEngine:
-        # TESTE DE HARDENING: Usando o Mock para provar o desacoplamento
-        # Note que não importamos o Playwright no topo do arquivo.
-        
+    @classmethod
+    def get_engine(cls, session_id: str = "default") -> AuthEngine:
+        if session_id in cls._instances:
+            return cls._instances[session_id]
+
         if settings.APP_MODE == "LAB":
             from app.core.auth.adapters.mock_adapter import MockAuthAdapter
-            return MockAuthAdapter(base_url=settings.VIVVER_URL)
+            cls._instances[session_id] = MockAuthAdapter(base_url=settings.VIVVER_URL)
+            return cls._instances[session_id]
         
-        # Se chegarmos aqui, tentamos carregar o Playwright apenas sob demanda
         try:
             from app.core.auth.adapters.playwright.adapter import PlaywrightAuthAdapter
-            return PlaywrightAuthAdapter(base_url=settings.VIVVER_URL)
+            cls._instances[session_id] = PlaywrightAuthAdapter()
+            return cls._instances[session_id]
         except ImportError:
-            # Fallback seguro caso o Playwright não esteja instalado no ambiente
             from app.core.auth.adapters.mock_adapter import MockAuthAdapter
-            return MockAuthAdapter(base_url=settings.VIVVER_URL)
+            cls._instances[session_id] = MockAuthAdapter(base_url=settings.VIVVER_URL)
+            return cls._instances[session_id]

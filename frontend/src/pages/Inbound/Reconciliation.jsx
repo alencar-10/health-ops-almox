@@ -12,6 +12,7 @@ import {
   ArrowLeftRight
 } from 'lucide-react';
 import './Reconciliation.css';
+import { API_BASE } from '../../core/config/apiBase';
 
 const MOCK_ITEMS = [
   {
@@ -132,7 +133,7 @@ const Reconciliation = () => {
 
   const handleConfirmMatch = async (itemId, suggestion) => {
     try {
-      const response = await fetch(`http://localhost:8001/almox/v1/inbound/items/${itemId}/reconcile`, {
+      const response = await fetch(`${API_BASE}/almox/v1/inbound/items/${itemId}/reconcile`, {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json',
@@ -166,7 +167,7 @@ const Reconciliation = () => {
     try {
       console.log("Iniciando registro para:", registeringItem.raw_name);
       
-      const response = await fetch('http://localhost:8001/almox/v1/catalog/register-medicine?tenant_id=fb0282be-1b58-40ce-a124-1cf897e1a393&unit_id=3d14d3ea-52f4-42f7-bfa3-4e1fa1aabd42', {
+      const response = await fetch(`${API_BASE}/almox/v1/catalog/register-medicine?tenant_id=fb0282be-1b58-40ce-a124-1cf897e1a393&unit_id=3d14d3ea-52f4-42f7-bfa3-4e1fa1aabd42`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
@@ -208,7 +209,7 @@ const Reconciliation = () => {
       }
     } catch (error) {
       console.error("Erro no fetch:", error);
-      alert("ERRO DE COMUNICAÇÃO: Verifique se o servidor está rodando na porta 8001.");
+      alert(`ERRO DE COMUNICAÇÃO: Verifique se a API está de pé em ${API_BASE} (ver docs/OFFICIAL_LOCAL_PORTS.md).`);
     } finally {
       setIsRegistering(false);
       setRegisteringItem(null);

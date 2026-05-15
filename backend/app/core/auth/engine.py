@@ -48,7 +48,7 @@ class ContextDiscoveryEngine(ABC):
         pass
 
     @abstractmethod
-    async def switch_context(self, unit_id: str, sector_id: str) -> Optional[OperationalContext]:
+    async def switch_context(self, unit_id: str, sector_id: str, operation_id: Optional[str] = None) -> Optional[OperationalContext]:
         """
         Executa a troca dinâmica de contexto e revalida a integridade da sessão.
         """

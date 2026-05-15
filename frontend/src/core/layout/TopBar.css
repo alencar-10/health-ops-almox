@@ -1,3 +1,22 @@
+.top-bar--session-pending .top-bar-session-pending {
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.status-badge.failed {
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+  max-width: 420px;
+}
+
+.status-badge.failed span {
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .top-bar {
   grid-area: header;
   background: white;
@@ -8,6 +27,8 @@
   padding: 0 24px;
   justify-content: space-between;
   box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  overflow: visible;
+  z-index: 50;
 }
 
 .context-group {
@@ -18,10 +39,86 @@
 }
 
 .context-item {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 4px;
   min-width: 120px;
+}
+
+.context-item.clickable:not(.disabled) {
+  cursor: pointer;
+}
+
+.context-item.disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Lista flutuante — NÃO ocupar fluxo do header (evita “explodir” a barra) */
+.units-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  min-width: min(100vw - 48px, 320px);
+  max-width: 420px;
+  max-height: min(70vh, 360px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.14);
+  z-index: 300;
+  padding: 4px 0;
+}
+
+.dropdown-header {
+  font-size: 10px;
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 8px 14px 6px;
+}
+
+.dropdown-item {
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-item:hover {
+  background: #f1f5f9;
+}
+
+.dropdown-item.active {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.dropdown-loading {
+  padding: 16px 14px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.dropdown-msg {
+  padding: 12px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  line-height: 1.35;
+}
+
+.dropdown-msg--error {
+  color: #b91c1c;
+  background: #fef2f2;
 }
 
 .context-label {

@@ -10,22 +10,22 @@ Esta tela é responsável pela gestão direta do catálogo de produtos acabados,
 ## 2. Especificações Técnicas (API)
 
 ### Listar Produtos
-**URL:** `GET http://localhost:8001/almox/v1/products/`
+**URL:** `GET http://localhost:8000/almox/v1/products/`
 
 **cURL Bash:**
 ```bash
 curl -X 'GET' \
-  'http://localhost:8001/almox/v1/products/?page=1&limit=20' \
+  'http://localhost:8000/almox/v1/products/?page=1&limit=20' \
   -H 'accept: application/json'
 ```
 
 ### Criar Novo Produto
-**URL:** `POST http://localhost:8001/almox/v1/products/`
+**URL:** `POST http://localhost:8000/almox/v1/products/`
 
 **cURL Bash:**
 ```bash
 curl -X 'POST' \
-  'http://localhost:8001/almox/v1/products/' \
+  'http://localhost:8000/almox/v1/products/' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
