@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Secrets & local config
+backend/.env
+frontend/.env
+.env.local
+
+# Playwright / switch runtime artifacts
+backend/last_switch_commit.json
+backend/last_switch_error.html
+backend/scratch/
+
+# Logs & local experiments
+*.log
+test_out*.log
+real_test.log
+
+# IDE / OS
+.idea/
+.vscode/
+Thumbs.db
+.DS_Store
+
+# Node (frontend)
+frontend/node_modules/
+frontend/dist/
+
+# Local data dumps (not institutional evidence)
+/data/

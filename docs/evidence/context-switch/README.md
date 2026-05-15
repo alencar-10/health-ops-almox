@@ -18,6 +18,8 @@ Este diretório preserva a **causalidade técnica** da estabilização da persis
 | [VALIDATED_SCENARIOS.md](./VALIDATED_SCENARIOS.md) | Cenários e tempos observados |
 | [ARCHITECTURAL_IMPACT.md](./ARCHITECTURAL_IMPACT.md) | Impacto no HealthOps, merge scope |
 | [CHANGELOG_CONTEXT_ENGINE.md](./CHANGELOG_CONTEXT_ENGINE.md) | **Changelog institucional** (Added / Fixed / Known risks) |
+| [RELEASE_HANDOFF.md](./RELEASE_HANDOFF.md) | **Handoff operacional** (boot, env, validação) |
+| [WORKING_TREE_AUDIT.md](./WORKING_TREE_AUDIT.md) | Auditoria IN/OUT da release |
 
 ## Documentos de suporte
 
