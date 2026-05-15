@@ -163,3 +163,7 @@ Ver: [ARCHITECTURAL_IMPACT.md](./docs/evidence/context-switch/ARCHITECTURAL_IMPA
 1. Merge **only** `release/context-commit-stable` (squash ou merge commit — preferir merge commit para preservar cherry-pick message).
 2. Tag `context-engine-stable-v1` já aponta para o commit desta branch após push.
 3. **Do not** merge `feature/platform-core-hardening` wholesale until UX/observability items are reviewed separately.
+
+## After merge
+
+Atualizar / publicar [CHANGELOG_CONTEXT_ENGINE.md](./docs/evidence/context-switch/CHANGELOG_CONTEXT_ENGINE.md) como registro institucional pós-merge (onboarding, auditoria, regressão, IA).

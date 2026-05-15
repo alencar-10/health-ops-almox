@@ -17,6 +17,7 @@ Este diretório preserva a **causalidade técnica** da estabilização da persis
 | [LESSONS_LEARNED.md](./LESSONS_LEARNED.md) | Lições institucionais |
 | [VALIDATED_SCENARIOS.md](./VALIDATED_SCENARIOS.md) | Cenários e tempos observados |
 | [ARCHITECTURAL_IMPACT.md](./ARCHITECTURAL_IMPACT.md) | Impacto no HealthOps, merge scope |
+| [CHANGELOG_CONTEXT_ENGINE.md](./CHANGELOG_CONTEXT_ENGINE.md) | **Changelog institucional** (Added / Fixed / Known risks) |
 
 ## Documentos de suporte
 
