@@ -47,6 +47,7 @@ Não altere frontend, backend de sessão/contexto Vivver nem rotas `/almox/v1/se
 | [CHANGELOG_CONTEXT_ENGINE.md](./CHANGELOG_CONTEXT_ENGINE.md) | **Changelog institucional** (Added / Fixed / Known risks) |
 | [RELEASE_HANDOFF.md](./RELEASE_HANDOFF.md) | **Handoff operacional** (boot, env, validação) |
 | [FRONTEND_BASELINE_PROTOCOL.md](../../core-platform/FRONTEND_BASELINE_PROTOCOL.md) | **Checklist pré-merge** do shell / TopBar (smoke, hidratação, switch, stale, recovery, tag sugerido) |
+| [OFFICIAL_LOCAL_PORTS.md](../../OFFICIAL_LOCAL_PORTS.md) | **Portas dev (8000/5173)**, ordem de boot, política **401 → relogin ERP primeiro** |
 | [WORKING_TREE_AUDIT.md](./WORKING_TREE_AUDIT.md) | Auditoria IN/OUT da release |
 
 ## Documentos de suporte

@@ -18,12 +18,12 @@ Esta tela é responsável por vincular itens vindos de um XML de fornecedor com 
 ### Endpoint: Registro de Novo Medicamento (Shortcut)
 Utilizado quando o produto não existe no Vivver e precisa ser criado "na hora".
 
-**URL:** `POST http://localhost:8001/almox/v1/catalog/register-medicine`
+**URL:** `POST http://localhost:8000/almox/v1/catalog/register-medicine`
 
 **cURL Bash (Para teste manual):**
 ```bash
 curl -X 'POST' \
-  'http://localhost:8001/almox/v1/catalog/register-medicine?tenant_id=fb0282be-1b58-40ce-a124-1cf897e1a393&unit_id=3d14d3ea-52f4-42f7-bfa3-4e1fa1aabd42' \
+  'http://localhost:8000/almox/v1/catalog/register-medicine?tenant_id=fb0282be-1b58-40ce-a124-1cf897e1a393&unit_id=3d14d3ea-52f4-42f7-bfa3-4e1fa1aabd42' \
   -H 'accept: application/json' \
   -H 'x-tenant-id: fb0282be-1b58-40ce-a124-1cf897e1a393' \
   -H 'x-unit-id: 3d14d3ea-52f4-42f7-bfa3-4e1fa1aabd42' \
@@ -41,12 +41,12 @@ curl -X 'POST' \
 ### Endpoint: Confirmar Vínculo (Reconciliação)
 Utilizado para confirmar que o item do XML corresponde a um produto já existente.
 
-**URL:** `PUT http://localhost:8001/almox/v1/inbound/items/{item_id}/reconcile`
+**URL:** `PUT http://localhost:8000/almox/v1/inbound/items/{item_id}/reconcile`
 
 **cURL Bash:**
 ```bash
 curl -X 'PUT' \
-  'http://localhost:8001/almox/v1/inbound/items/1/reconcile' \
+  'http://localhost:8000/almox/v1/inbound/items/1/reconcile' \
   -H 'accept: application/json' \
   -H 'x-tenant-id: fb0282be-1b58-40ce-a124-1cf897e1a393' \
   -H 'Content-Type: application/json' \

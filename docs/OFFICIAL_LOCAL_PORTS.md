@@ -1,0 +1,88 @@
+# Portas oficiais — desenvolvimento local (HealthOps Almox)
+
+**Objetivo:** uma única convenção para máquina dev, evitando `8000` vs `8001`, `localhost` vs `127.0.0.1`, e “duas APIs ao mesmo tempo sem querer”.
+
+**Última revisão:** 2026-05-15
+
+---
+
+## 1. Convenção fixa
+
+| Serviço | Porta | URL típica |
+|---------|-------|------------|
+| **Backend (FastAPI / uvicorn)** | **8000** | `http://127.0.0.1:8000` |
+| **Frontend (Vite)** | **5173** | `http://localhost:5173` *(recomendado — ver §4)* |
+| **PostgreSQL** | conforme `backend/.env` | (ex.: `5434`) |
+
+**Não** usar `8001` para a API neste fluxo — URLs e proxy do Vite assumem **8000**.
+
+---
+
+## 2. Ordem obrigatória de arranque
+
+Subir **nesta ordem**, sempre:
+
+1. **Backend** — `uvicorn` na **8000** (contém o fluxo que **lança o Playwright/Chromium** quando precisa falar com o Vivver).  
+2. **Playwright** — **não é um terceiro servidor HTTP separado** no nosso desenho; significa:
+   - uma vez por venv: `playwright install chromium` (ver [RELEASE_HANDOFF](evidence/context-switch/RELEASE_HANDOFF.md));
+   - garantir que o **backend já está de pé** antes de qualquer operação que force login/troca Vivver (o browser controlado nasce **dentro do processo backend**).
+3. **Frontend** — `npm run dev` na **5173**, **depois** da API estar a responder (ex.: `/docs`).
+
+Assim evitamos “UI a bater em API que ainda está a autenticar / ainda não existe”.
+
+---
+
+## 3. Variáveis `.env` alinhadas
+
+**`frontend/.env`** (modo real):
+
+```env
+VITE_APP_MODE=PRODUCTION
+VITE_API_URL=http://127.0.0.1:8000
+```
+
+Depois de mudar `VITE_*`, **reiniciar** o Vite.
+
+O **proxy** do Vite (`/almox` → backend) em `frontend/vite.config.js` deve apontar para **127.0.0.1:8000**.
+
+---
+
+## 4. Vite: `localhost` vs `127.0.0.1`
+
+O `server.host` do Vite está configurado para responder em **IPv4 e IPv6**, evitando o caso em que o dev server só escuta em `::1` e pedidos a `127.0.0.1:5173` falham.
+
+- Preferir abrir a UI em **`http://localhost:5173`**.
+
+---
+
+## 5. Erro 401 / “Failed to resolve real ERP context”
+
+**Situação atual (esperada após endurecimento):** o sistema **distingue** falha de rede (backend inacessível) de **sessão/contexto ERP inválido** — isto é **progresso**: antes parecia “tudo partido”; agora o estado inválido aparece de forma explícita.
+
+**Primeira ação (ordem do time):**
+
+1. **Relogin / reautenticar no fluxo Vivver via backend** (credenciais, sessão ERP expirada, Playwright não autenticado).  
+2. Confirmar env: `VIVVER_USER`, `VIVVER_PASS`, `VIVVER_OPERATOR_ID`, URLs Vivver — ver handoff.
+
+**Evitar:**
+
+- **Não** “refatorar o frontend para esconder o 401” como primeira reação — o sintoma já está **corretamente detectado**; tratar é **motor de sessão + ERP**, não cosmética de UI.
+
+Se após relogar o problema persistir, seguir evidência em [docs/evidence/context-switch/](evidence/context-switch/README.md).
+
+---
+
+## 6. Checklist rápido quando “não conecta”
+
+- [ ] Só existe **uma** instância canónica na **8000** (evitar dois `uvicorn` em portas diferentes por hábito).  
+- [ ] `curl http://127.0.0.1:8000/docs` → 200  
+- [ ] `frontend/.env` com `VITE_API_URL=http://127.0.0.1:8000` e Vite reiniciado  
+- [ ] Frontend aberto em `http://localhost:5173`
+
+---
+
+## 7. Documentos relacionados
+
+- Arranque detalhado: [RELEASE_HANDOFF.md](evidence/context-switch/RELEASE_HANDOFF.md)  
+- Orientação IA: [AI_SESSION_START_HERE.md](AI_SESSION_START_HERE.md)  
+- Baseline UI: [FRONTEND_BASELINE_PROTOCOL.md](core-platform/FRONTEND_BASELINE_PROTOCOL.md)

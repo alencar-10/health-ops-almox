@@ -93,6 +93,7 @@ Criar `backend/.env` (nunca commitar):
 | `VIVVER_URL` | `https://guaraciama-mg.vivver.com` |
 | `DB_USER`, `DB_PASSWORD`, `DB_NAME`, `DB_HOST`, `DB_PORT` | PostgreSQL |
 | `DATABASE_URL` | URL async SQLAlchemy |
+| `VIVVER_OPERATOR_ID` | ID Vivver (`codoperador`) — lookups de unidade/setor; ver onboarding |
 
 Frontend `frontend/.env` (PRODUCTION):
 
@@ -105,19 +106,30 @@ VITE_API_URL=http://127.0.0.1:8000
 
 ## 7. Ordem de boot
 
+**Fonte de verdade:** [OFFICIAL_LOCAL_PORTS.md](../OFFICIAL_LOCAL_PORTS.md) — backend **8000**, frontend **5173**, ordem Backend → Playwright (install + fluxo no processo API) → Frontend.
+
+Resumo:
+
 1. PostgreSQL acessível (se módulos DB forem usados)
-2. **Backend** (Python 3.13):
+2. **Backend** (Python 3.13) na **8000** — hospeda também o **Playwright** usado pelo Vivver. Na **primeira** vez nesta máquina/venv:
+
+```bash
+playwright install chromium
+```
+
+Depois mantenha o servidor:
 
 ```bash
 cd backend
 py -3.13 -m uvicorn app.main:app --host 127.0.0.1 --port 8000
 ```
 
-3. **Frontend**:
+3. **Frontend** (`npm run dev` na **5173**) — apenas **depois** de `/docs` responder em `127.0.0.1:8000`.
 
 ```bash
 cd frontend
 npm run dev
+# UI: http://localhost:5173 — ver docs/OFFICIAL_LOCAL_PORTS.md (host IPv4/IPv6)
 ```
 
 4. Abrir UI → login implícito via backend → testar troca no TopBar

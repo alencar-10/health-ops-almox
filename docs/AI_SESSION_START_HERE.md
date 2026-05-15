@@ -22,13 +22,14 @@
 
 ### Passo C — Arranque técnico local
 
-6. **[docs/evidence/context-switch/RELEASE_HANDOFF.md](evidence/context-switch/RELEASE_HANDOFF.md)** — env, boot backend/frontend, credenciais.
+6. **[docs/OFFICIAL_LOCAL_PORTS.md](OFFICIAL_LOCAL_PORTS.md)** — **porta canónica da API (8000), Vite (5173), ordem de boot, política 401/relogin**.  
+7. **[docs/evidence/context-switch/RELEASE_HANDOFF.md](evidence/context-switch/RELEASE_HANDOFF.md)** — env, boot backend/frontend, credenciais.
 
 ### Passo D — Contratos e decisões
 
-7. **[docs/contracts.md](contracts.md)**  
-8. **[docs/architecture/ARCHITECTURE_FREEZE_CHECKLIST.md](architecture/ARCHITECTURE_FREEZE_CHECKLIST.md)**  
-9. **[docs/conventions.md](conventions.md)**
+8. **[docs/contracts.md](contracts.md)**  
+9. **[docs/architecture/ARCHITECTURE_FREEZE_CHECKLIST.md](architecture/ARCHITECTURE_FREEZE_CHECKLIST.md)**  
+10. **[docs/conventions.md](conventions.md)**
 
 ---
 
@@ -81,7 +82,7 @@
 |----------|------|--------|
 | `VIVVER_OPERATOR_ID` | `backend/.env` | ID numérico Vivver (`codoperador`). Necessário para listagens de unidade/setor nos lookups; sem isto, dropdown pode mostrar “nenhuma unidade” com contexto ainda visível. |
 | `VITE_APP_MODE` | `frontend/.env` | `LAB` vs `PRODUCTION` — define se há chamadas reais ao backend de sessão. |
-| `VITE_API_URL` | `frontend/.env` | Base URL da API em modo PRODUCTION. |
+| `VITE_API_URL` | `frontend/.env` | Deve ser **`http://127.0.0.1:8000`** em dev (ver [OFFICIAL_LOCAL_PORTS.md](OFFICIAL_LOCAL_PORTS.md)). Reiniciar Vite após alterar. |
 
 ---
 

@@ -6,6 +6,7 @@
 
 **Leitura obrigatória associada:** ordem em [context-switch README](../evidence/context-switch/README.md), [COMMIT_PROTOCOL_v1](../evidence/context-switch/COMMIT_PROTOCOL_v1.md), [CONTEXT_COHERENCE_RULES](./CONTEXT_COHERENCE_RULES.md), [VALIDATED_SCENARIOS](../evidence/context-switch/VALIDATED_SCENARIOS.md).  
 **Boot técnico:** [RELEASE_HANDOFF](../evidence/context-switch/RELEASE_HANDOFF.md).  
+**Portas locais & ordem de arranque:** [OFFICIAL_LOCAL_PORTS.md](../OFFICIAL_LOCAL_PORTS.md).  
 **Guia para nova sessão de IA:** [AI_SESSION_START_HERE.md](../AI_SESSION_START_HERE.md).
 
 ---

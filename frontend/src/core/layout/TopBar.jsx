@@ -8,11 +8,10 @@ import {
   CheckCircle2,
   ChevronDown,
 } from 'lucide-react';
+import { API_BASE } from '../config/apiBase';
 import { useSession } from '../context/SessionContext';
 import { isWeakLabel } from '../context/sessionMerge';
 import './TopBar.css';
-
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 const TopBar = () => {
   const {

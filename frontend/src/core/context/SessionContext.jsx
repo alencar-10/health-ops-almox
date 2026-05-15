@@ -7,9 +7,9 @@ import React, {
   useRef,
 } from 'react';
 import { isWeakLabel, mergeSessionLabels } from './sessionMerge';
+import { API_BASE } from '../config/apiBase';
 
 const SessionContext = createContext();
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 const SWITCH_TIMEOUT_MS = 130_000;
 
 /** LAB | PRODUCTION — normaliza .env (espaços, casing) */
@@ -93,7 +93,9 @@ export const SessionProvider = ({ children }) => {
       }
     } catch (error) {
       console.error('Failed to fetch real session:', error);
-      setSwitchError('Não foi possível conectar ao backend. Verifique se está em http://localhost:8000');
+      setSwitchError(
+        `Não foi possível conectar ao backend em ${API_BASE}. Confirme VITE_API_URL e que o uvicorn está de pé — ver docs/OFFICIAL_LOCAL_PORTS.md`
+      );
     } finally {
       setInitialLoading(false);
     }
@@ -280,8 +282,8 @@ export const SessionProvider = ({ children }) => {
       const aborted = error?.name === 'AbortError';
       setSwitchError(
         aborted
-          ? 'Troca excedeu o tempo limite (~2 min). Verifique o backend na porta 8000 e tente de novo.'
-          : 'Backend inacessível. Reinicie o servidor na porta 8000.'
+          ? `Troca excedeu o tempo limite (~2 min). Verifique o backend em ${API_BASE} e tente de novo.`
+          : `Backend inacessível em ${API_BASE}. Reinicie uvicorn (porta oficial 8000 — ver docs/OFFICIAL_LOCAL_PORTS.md).`
       );
       setCurrentOperation(null);
       return false;
