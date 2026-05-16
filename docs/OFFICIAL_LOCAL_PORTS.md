@@ -116,6 +116,7 @@ Se após relogar o problema persistir, seguir evidência em [docs/evidence/conte
 
 ## 9. Documentos relacionados
 
+- **IA — parar/iniciar/reiniciar:** [AI_OPERATIONS_LOCAL_SERVERS.md](AI_OPERATIONS_LOCAL_SERVERS.md)  
 - Arranque detalhado: [RELEASE_HANDOFF.md](evidence/context-switch/RELEASE_HANDOFF.md)  
 - Orientação IA: [AI_SESSION_START_HERE.md](AI_SESSION_START_HERE.md)  
 - Baseline UI: [FRONTEND_BASELINE_PROTOCOL.md](core-platform/FRONTEND_BASELINE_PROTOCOL.md)

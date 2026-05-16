@@ -23,13 +23,14 @@
 ### Passo C — Arranque técnico local
 
 6. **[docs/OFFICIAL_LOCAL_PORTS.md](OFFICIAL_LOCAL_PORTS.md)** — **porta canónica da API (8000), Vite (5173), ordem de boot, política 401/relogin**.  
-7. **[docs/evidence/context-switch/RELEASE_HANDOFF.md](evidence/context-switch/RELEASE_HANDOFF.md)** — env, boot backend/frontend, credenciais.
+7. **[docs/AI_OPERATIONS_LOCAL_SERVERS.md](AI_OPERATIONS_LOCAL_SERVERS.md)** — **instruções para IA: parar, iniciar e reiniciar servidores** (comandos Windows, erros a evitar, smoke). **Ler antes de subir/derrubar processos.**  
+8. **[docs/evidence/context-switch/RELEASE_HANDOFF.md](evidence/context-switch/RELEASE_HANDOFF.md)** — env, boot backend/frontend, credenciais.
 
 ### Passo D — Contratos e decisões
 
-8. **[docs/contracts.md](contracts.md)**  
-9. **[docs/architecture/ARCHITECTURE_FREEZE_CHECKLIST.md](architecture/ARCHITECTURE_FREEZE_CHECKLIST.md)**  
-10. **[docs/conventions.md](conventions.md)**
+9. **[docs/contracts.md](contracts.md)**  
+10. **[docs/architecture/ARCHITECTURE_FREEZE_CHECKLIST.md](architecture/ARCHITECTURE_FREEZE_CHECKLIST.md)**  
+11. **[docs/conventions.md](conventions.md)**
 
 ---
 
@@ -96,12 +97,16 @@
 
 ## 7. Comandos úteis (smoke rápido)
 
-```bash
-# Frontend
-cd frontend && npm ci && npm run build && npm run dev
+**Parar / iniciar / reiniciar:** ver **[AI_OPERATIONS_LOCAL_SERVERS.md](AI_OPERATIONS_LOCAL_SERVERS.md)** (procedimento completo para agentes).
 
-# Backend (ajustar conforme RELEASE_HANDOFF)
-cd backend && uvicorn ...
+```powershell
+# Backend (sempre a partir de backend/)
+cd backend
+.\scripts\start-backend.ps1
+
+# Frontend
+cd frontend
+npm run dev
 ```
 
 Lint: `npm run lint` no frontend — na última execução registada no protocolo **falhou** (ESLint); política do projeto pode ser corrigir só se bloquear CI — ver observações no protocolo.
