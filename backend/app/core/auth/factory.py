@@ -9,6 +9,11 @@ class AuthEngineFactory:
     _instances = {}
 
     @classmethod
+    def reset_engine(cls, session_id: str = "default") -> None:
+        """Descarta singleton (ex.: após erro Playwright ou troca de .env — reinicie uvicorn se mudou env)."""
+        cls._instances.pop(session_id, None)
+
+    @classmethod
     def get_engine(cls, session_id: str = "default") -> AuthEngine:
         if session_id in cls._instances:
             return cls._instances[session_id]

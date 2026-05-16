@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import sys
 import uuid
 from typing import Optional
 
@@ -13,6 +14,40 @@ from app.schemas.common import StandardResponse
 logger = logging.getLogger(__name__)
 
 router = APIRouter()
+
+
+@router.get("/diagnostics", response_model=StandardResponse[dict])
+async def session_diagnostics():
+    """Smoke operacional: Python, policy asyncio, motor ERP (sem expor segredos)."""
+    engine = AuthEngineFactory.get_engine()
+    data = {
+        "python_executable": sys.executable,
+        "app_mode": settings.APP_MODE,
+        "asyncio_policy": type(asyncio.get_event_loop_policy()).__name__,
+        "engine_class": type(engine).__name__,
+        "vivver_user_configured": bool((settings.VIVVER_USER or "").strip()),
+        "vivver_operator_id_configured": bool(
+            (getattr(settings, "VIVVER_OPERATOR_ID", None) or "").strip()
+        ),
+    }
+    if hasattr(engine, "get_status"):
+        data["engine_status"] = engine.get_status()
+    if hasattr(engine, "last_login_failure"):
+        data["last_login_failure"] = engine.last_login_failure
+    return {"data": data, "message": "Session diagnostics."}
+
+
+@router.post("/reset-erp", response_model=StandardResponse[dict])
+async def reset_erp_session():
+    """Fecha browser Playwright e descarta singleton — use antes de novo login após 401."""
+    engine = AuthEngineFactory.get_engine()
+    if hasattr(engine, "_teardown_browser"):
+        await engine._teardown_browser()
+    AuthEngineFactory.reset_engine()
+    return {
+        "data": {"reset": True},
+        "message": "Motor ERP reiniciado. Chame GET /current para novo login Vivver.",
+    }
 
 
 async def _resolve_sector_id(engine, unit_id: str, sector_id: Optional[str]) -> tuple[str, str]:
@@ -56,6 +91,11 @@ async def get_real_session_context():
                 "logs do uvicorn."
             )
             detail = f"{base} Detalhe: {inner}" if inner else base
+            if inner and "NotImplementedError" in inner:
+                detail += (
+                    " No Windows isto costuma ser event loop Selector em vez de Proactor "
+                    "(reinicie o uvicorn a partir de backend/.venv; ver docs/OFFICIAL_LOCAL_PORTS.md)."
+                )
             raise HTTPException(status_code=401, detail=detail)
             
         return {

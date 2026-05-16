@@ -1,4 +1,13 @@
+# Deve ser o primeiro import do processo: Playwright no Windows exige ProactorEventLoop.
+from app.core.asyncio_windows import ensure_windows_proactor_event_loop_policy
+
+ensure_windows_proactor_event_loop_policy()
+
+import asyncio
+import sys
 import uuid
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI, Request, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from app.api import health
@@ -8,9 +17,23 @@ from app.core.logging import correlation_id, logger
 
 from app.core.dependencies import validate_operational_context
 
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    loop_policy = type(asyncio.get_event_loop_policy()).__name__
+    logger.info(
+        "API startup: python=%s APP_MODE=%s asyncio_policy=%s",
+        sys.executable,
+        settings.APP_MODE,
+        loop_policy,
+    )
+    yield
+
+
 app = FastAPI(
     title=settings.PROJECT_NAME,
-    version="0.1.0"
+    version="0.1.0",
+    lifespan=lifespan,
 )
 
 # Enable CORS for development

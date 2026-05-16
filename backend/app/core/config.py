@@ -1,5 +1,12 @@
-from pydantic_settings import BaseSettings, SettingsConfigDict
 from functools import lru_cache
+from pathlib import Path
+
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+# Sempre backend/.env — independente do cwd ao arrancar uvicorn
+_BACKEND_DIR = Path(__file__).resolve().parents[2]
+_ENV_FILE = _BACKEND_DIR / ".env"
+
 
 class Settings(BaseSettings):
     PROJECT_NAME: str = "Vivver Almox MVP"
@@ -25,9 +32,9 @@ class Settings(BaseSettings):
     DATABASE_URL: str
 
     model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=str(_ENV_FILE),
         env_file_encoding="utf-8",
-        extra="ignore"
+        extra="ignore",
     )
 
 @lru_cache

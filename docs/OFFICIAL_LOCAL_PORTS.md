@@ -55,7 +55,39 @@ O `server.host` do Vite está configurado para responder em **IPv4 e IPv6**, evi
 
 ---
 
-## 5. Erro 401 / “Failed to resolve real ERP context”
+## 5. `playwright install` — uma vez por venv, não a cada restart
+
+| Pergunta | Resposta |
+|----------|----------|
+| Preciso de `playwright install chromium` **toda vez** que reinicio o uvicorn? | **Não.** Só quando criar/actualizar o `.venv` ou mudar versão do Playwright. |
+| O que se perde ao **reiniciar o servidor**? | A **sessão em memória** (browser Playwright no processo). A primeira chamada a `/session/current` faz **login de novo** no Vivver (~15–90 s). |
+| Isso é o mesmo que “reinstalar Playwright”? | **Não.** Reinício = novo login ERP; install = binários do Chromium no disco. |
+
+Comando (uma vez no venv do backend):
+
+```bash
+cd backend
+.\.venv\Scripts\playwright.exe install chromium
+```
+
+---
+
+## 6. Erro 401 / `NotImplementedError` vazio
+
+**Sintoma:** `Detalhe: NotImplementedError:` sem mais texto.
+
+**Causa frequente no Windows:** o processo do uvicorn está com **WindowsSelectorEventLoopPolicy**; o Playwright precisa de **Proactor** (subprocessos). O código em `app/main.py` força Proactor no arranque — **reinicie o uvicorn** depois de actualizar.
+
+**Checklist:**
+
+1. Pare **todos** os `python`/uvicorn na porta **8000** (evite dois servidores em conflito).  
+2. Suba só com: `backend\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000` (cwd = `backend`).  
+3. `GET http://127.0.0.1:8000/almox/v1/session/diagnostics` → `asyncio_policy` deve ser **`WindowsProactorEventLoopPolicy`**.  
+4. Se ainda 401: `POST http://127.0.0.1:8000/almox/v1/session/reset-erp` e depois `GET /current` de novo.
+
+---
+
+## 7. Erro 401 / “Failed to resolve real ERP context” (geral)
 
 **Situação atual (esperada após endurecimento):** o sistema **distingue** falha de rede (backend inacessível) de **sessão/contexto ERP inválido** — isto é **progresso**: antes parecia “tudo partido”; agora o estado inválido aparece de forma explícita.
 
@@ -72,7 +104,7 @@ Se após relogar o problema persistir, seguir evidência em [docs/evidence/conte
 
 ---
 
-## 6. Checklist rápido quando “não conecta”
+## 8. Checklist rápido quando “não conecta”
 
 - [ ] Só existe **uma** instância canónica na **8000** (evitar dois `uvicorn` em portas diferentes por hábito).  
 - [ ] `curl http://127.0.0.1:8000/docs` → 200  
@@ -82,7 +114,7 @@ Se após relogar o problema persistir, seguir evidência em [docs/evidence/conte
 
 ---
 
-## 7. Documentos relacionados
+## 9. Documentos relacionados
 
 - Arranque detalhado: [RELEASE_HANDOFF.md](evidence/context-switch/RELEASE_HANDOFF.md)  
 - Orientação IA: [AI_SESSION_START_HERE.md](AI_SESSION_START_HERE.md)  

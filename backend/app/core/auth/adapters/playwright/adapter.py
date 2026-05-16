@@ -18,6 +18,7 @@ from app.core.auth.adapters.playwright.trace.commit_trace import (
     read_header_context,
     safe_goto_home,
 )
+from app.core.asyncio_windows import ensure_windows_proactor_event_loop_policy
 
 logger = logging.getLogger(__name__)
 
@@ -42,6 +43,7 @@ class PlaywrightAuthAdapter(AuthEngine, ContextDiscoveryEngine):
         self._browser = None
         self._context = None
         self._page = None
+        self._playwright_driver = None
         self._browser_lock = asyncio.Lock()
         self._cached_context: Optional[OperationalContext] = None
 
@@ -59,22 +61,66 @@ class PlaywrightAuthAdapter(AuthEngine, ContextDiscoveryEngine):
     def get_status(self) -> str:
         return self._status
 
+    async def _session_alive(self) -> bool:
+        if not self._page:
+            return False
+        try:
+            return not self._page.is_closed()
+        except Exception:
+            return False
+
+    async def _teardown_browser(self) -> None:
+        """Fecha Chromium/Playwright — obrigatório antes de novo login após erro ou restart lógico."""
+        if self._browser:
+            try:
+                await self._browser.close()
+            except Exception:
+                pass
+        if self._context:
+            try:
+                await self._context.close()
+            except Exception:
+                pass
+        if self._playwright_driver:
+            try:
+                await self._playwright_driver.stop()
+            except Exception:
+                pass
+        self._browser = None
+        self._context = None
+        self._page = None
+        self._playwright_driver = None
+        self.session = None
+        self.discovery = None
+        self.switcher = None
+        self._cached_context = None
+        self._status = "IDLE"
+
     async def login(self, username: str, password: str, tenant_id: str) -> Optional[OperationalContext]:
         """
         Stage 1 & 2: Authentication & Active Context Resolution
         """
         async with self._browser_lock:
-            if self._status == "AUTHENTICATED" and self._page and self._cached_context:
+            if (
+                self._status == "AUTHENTICATED"
+                and self._cached_context
+                and await self._session_alive()
+            ):
                 logger.info("Reutilizando sessão autenticada (cache).")
                 return await self._hydrate_context_from_desktop_bar(self._cached_context)
+
+            if self._status in ("AUTHENTICATED", "ERROR") or self._page:
+                logger.info("Sessão Playwright inválida ou expirada — novo login.")
+                await self._teardown_browser()
 
             self._status = "LOGGING_IN"
             logger.info(f"Iniciando login orquestrado: {username}")
 
             try:
                 self._last_login_failure = None
-                playwright = await async_playwright().start()
-                self._browser = await playwright.chromium.launch(
+                ensure_windows_proactor_event_loop_policy()
+                self._playwright_driver = await async_playwright().start()
+                self._browser = await self._playwright_driver.chromium.launch(
                     headless=True,
                     args=["--disable-dev-shm-usage", "--no-sandbox"],
                 )
@@ -167,6 +213,7 @@ class PlaywrightAuthAdapter(AuthEngine, ContextDiscoveryEngine):
                 self._last_login_failure = f"{type(e).__name__}: {e}"
                 logger.exception("Erro no orquestrador de login: %s", e)
                 self._status = "ERROR"
+                await self._teardown_browser()
                 return None
 
     async def _hydrate_context_from_desktop_bar(
